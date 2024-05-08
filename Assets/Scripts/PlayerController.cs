@@ -5,15 +5,9 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public Difficulty globalDifficulty;
     public bool gameOver;
     public bool isFire;
     private int position = 175;
-    
-    public void SetDifficulty(Difficulty globalDifficulty)
-    {
-        this.globalDifficulty = globalDifficulty;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         Vector3 moveDirection = new Vector3(horizontalInput, 0f, 0f);
-        transform.Translate(moveDirection *  globalDifficulty.playerSpeed * Time.deltaTime, 0f);
+        transform.Translate(moveDirection *  Singleton.selected.playerSpeed * Time.deltaTime, 0f);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartFire();
@@ -70,7 +64,7 @@ public class PlayerController : MonoBehaviour
             bullet.SetActive(true);
 
             var script = bullet.GetComponent<Bullet>();
-            script.GO(globalDifficulty.bulletSpeed);
+            script.GO(Singleton.selected.bulletSpeed);
         }
     }
 
@@ -96,7 +90,7 @@ public class PlayerController : MonoBehaviour
         while (isFire)
         {
             FireBullet();
-            yield return new WaitForSeconds(globalDifficulty.fireRate);
+            yield return new WaitForSeconds(Singleton.selected.fireRate);
         }
     }
 }

@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 13.218419, y: 1.1169014, z: -5.191326}
-  m_LocalScale: {x: 1200, y: 1200, z: 1200}
+  m_LocalScale: {x: 3000, y: 3000, z: 3000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}
+  enemySpeed: 0
 --- !u!114 &-1258440712154741327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,5 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a715bdc9d68fb43b0b9b7690c49e7bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 9889f530c92e34a28ac15b5d46b8397e, type: 2}
   globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}

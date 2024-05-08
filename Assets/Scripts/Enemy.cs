@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Difficulty globalDifficulty;
-
-    public void SetDifficulty(Difficulty globalDifficulty)
-    {
-        this.globalDifficulty = globalDifficulty;
-    }
-
     private void Update()
     {
         
@@ -33,6 +26,8 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
+            EventGame playerHit = new("player_hit", 0);
+            GameEvent.Raise(playerHit);
         }
     }
 }

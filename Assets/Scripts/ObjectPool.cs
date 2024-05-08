@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public Difficulty globalDifficulty;
-
-    public void SetDifficulty(Difficulty globalDifficulty)
-    {
-        this.globalDifficulty = globalDifficulty;
-    }
 
     public static ObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
@@ -31,7 +25,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (ammoBoxControl != false)
         {
-            globalDifficulty.amountToPool = 10;
+            Singleton.selected.amountToPool = 10;
             AmmoBoxControlCD();
             ammoBoxControl = false;
         }
@@ -40,7 +34,7 @@ public class ObjectPool : MonoBehaviour
     public void SpawnAmmo()
     {
         pooledObjects = new List<GameObject>();
-        for (int i = 0; i < globalDifficulty.amountToPool; i++)
+        for (int i = 0; i < Singleton.selected.amountToPool; i++)
         {
             GameObject tmp = Instantiate(objectToPool);
             tmp.SetActive(false);

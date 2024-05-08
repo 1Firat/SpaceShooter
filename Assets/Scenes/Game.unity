@@ -426,8 +426,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1475264851}
-        m_TargetAssemblyTypeName: DecreaseHeart, Assembly-CSharp
+      - m_Target: {fileID: 2093454406}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -1104,7 +1104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bd20617600846348acb535025c469a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}
   pooledObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -1677,6 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17be543a494e4018ad712b7b4ab558f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
   globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}
 --- !u!1 &1294275928
 GameObject:
@@ -1960,7 +1960,6 @@ GameObject:
   - component: {fileID: 1475264849}
   - component: {fileID: 1475264848}
   - component: {fileID: 1475264847}
-  - component: {fileID: 1475264851}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2063,19 +2062,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1475264851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475264846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c17be543a494e4018ad712b7b4ab558f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}
 --- !u!1 &1560360287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,8 +2145,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1475264851}
-        m_TargetAssemblyTypeName: DecreaseHeart, Assembly-CSharp
+      - m_Target: {fileID: 2093454406}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -2703,7 +2689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789c1e9757f3345eebfff857200b1d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}
   gameOver: 0
   isFire: 0
 --- !u!1 &2049493328
@@ -2931,7 +2916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3706f6c5cfe2341158cd93275af6f209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}
   enemy:
   - {fileID: 6178008686338019353, guid: 44a3d5d44657f416e95ce95716327e67, type: 3}
   ammoBox: {fileID: 362220404119887918, guid: b88d8daad866f462683e4de02fd596f6, type: 3}

@@ -16,9 +16,7 @@ public class CustomDataEditor : Editor
         data.enemySpeed = EditorGUILayout.Slider("Enemy Speed", data.enemySpeed, 0f, 1000f);
         data.playerSpeed = EditorGUILayout.Slider("Player Speed", data.playerSpeed, 0f, 1000f);
         data.bulletSpeed = EditorGUILayout.Slider("Bullet Speed", data.bulletSpeed, 0f, 1000f);
-
         DrawDefaultInspector();
-
     }
 }
 #endif

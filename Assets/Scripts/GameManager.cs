@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    public Difficulty globalDifficulty;
-
-    public void SetDifficulty(Difficulty globalDifficulty)
-    {
-        this.globalDifficulty = globalDifficulty;
-    }
-
     private float time;
 
     public bool timeControl = false;
@@ -34,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        time = globalDifficulty.time;
+        time = Singleton.selected.time;
         time -= Time.deltaTime;
 
         EventGame gameTime = new("game_time",time);

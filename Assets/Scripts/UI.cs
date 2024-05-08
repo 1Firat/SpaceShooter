@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
@@ -71,6 +72,8 @@ public class UI : MonoBehaviour
         grayHeart1.gameObject.SetActive(false);
         grayHeart2.gameObject.SetActive(false);
         grayHeart3.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
         restartGameButton.SetActive(true);
         menuButton.gameObject.SetActive(false);
     }
@@ -101,5 +104,14 @@ public class UI : MonoBehaviour
         score += eventData;
         scoreText.text = "Score: " + score;
         scoreText2.text = "Your Score: " + score;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

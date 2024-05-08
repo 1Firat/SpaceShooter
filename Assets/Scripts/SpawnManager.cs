@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public Difficulty globalDifficulty;
-
-    public void SetDifficulty(Difficulty globalDifficulty)
-    {
-        this.globalDifficulty = globalDifficulty;
-    }
 
     public GameObject[] enemy;
     public GameObject ammoBox;
@@ -24,8 +18,8 @@ public class SpawnManager : MonoBehaviour
     {
         GameEvent.RegisterListener(EventListener);
 
-        ammoBoxSpawnTime = globalDifficulty.ammoBoxSpawnTime;
-        enemySpawnCD = globalDifficulty.enemySpawnCD;
+        ammoBoxSpawnTime = Singleton.selected.ammoBoxSpawnTime;
+        enemySpawnCD = Singleton.selected.enemySpawnCD;
         enemySpawnPoint = GameObject.FindWithTag("SpawnManager").transform;
         StartCoroutine(SpawnEnemy());
     }
@@ -42,11 +36,11 @@ public class SpawnManager : MonoBehaviour
 
         if (ammoBoxSpawnTime <= 0)
         {
-                       Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 12.8f, 250);
+            Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 12.8f, 250);
             GameObject a = Instantiate(ammoBox, randomPos, enemySpawnPoint.rotation);
-                   EnemyMovement script = a.GetComponent<EnemyMovement>();
-            script.enemySpeed = globalDifficulty.enemySpeed;
-                    ammoBoxSpawnTime = globalDifficulty.ammoBoxSpawnTime;
+            EnemyMovement script = a.GetComponent<EnemyMovement>();
+            script.enemySpeed = Singleton.selected.enemySpeed;
+            ammoBoxSpawnTime = Singleton.selected.ammoBoxSpawnTime;
         }
 
         if (gameOver != false)
@@ -99,10 +93,10 @@ public class SpawnManager : MonoBehaviour
 
             GameObject o = Instantiate(randomSpawnEnemy, randomPos, enemySpawnPoint.rotation);
             EnemyMovement script = o.GetComponent<EnemyMovement>();
-            script.enemySpeed = globalDifficulty.enemySpeed;
+            script.enemySpeed = Singleton.selected.enemySpeed;
 
 
-            yield return new WaitForSeconds(globalDifficulty.enemySpawnCD);
+            yield return new WaitForSeconds(Singleton.selected.enemySpawnCD);
         }
     }
 }

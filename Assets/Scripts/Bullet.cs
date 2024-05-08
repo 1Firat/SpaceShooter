@@ -5,12 +5,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public GameObject bullet;
-    public Difficulty globalDifficulty;
-
-    public void SetDifficulty(Difficulty globalDifficulty)
-    {
-        this.globalDifficulty = globalDifficulty;
-    }
 
     public void GO(float k)
     {
@@ -19,7 +13,7 @@ public class Bullet : MonoBehaviour
             k = 1;
         }
         var r = GetComponent<Rigidbody>();
-        r.velocity = new Vector3(0, 0, 1) * globalDifficulty.bulletSpeed * k;
+        r.velocity = new Vector3(0, 0, 1) * Singleton.selected.bulletSpeed * k;
     }
 
     private void Update()
