@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{28FCF307-BCEB-DF00-C466-08C29A16E02D}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI.cs">
+    <Files>
+      <File FileName="Assets/Scripts/DecreaseHeart.cs" Line="72" Column="10" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="30" Column="6" />
+      <File FileName="Assets/Scripts/ObjectPool.cs" Line="39" Column="1" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="29" Column="1" />
+      <File FileName="Assets/Scripts/SpawnManager.cs" Line="59" Column="1" />
+      <File FileName="Assets/Scripts/EnemyMovement.cs" Line="7" Column="40" />
+      <File FileName="Assets/Scripts/Singleton.cs" Line="40" Column="1" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="38" Column="2" />
+      <File FileName="Assets/Scripts/UI.cs" Line="60" Column="10" />
+      <File FileName="Assets/Scripts/Difficulty.cs" Line="33" Column="22" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="34" Column="1" />
+      <File FileName="Assets/Scripts/GameEvent.cs" Line="10" Column="78" />
+      <File FileName="Assets/Scripts/EventGame.cs" Line="12" Column="28" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="86403fbc-7d09-478f-be96-42e0749294fa" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

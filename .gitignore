@@ -1,0 +1,17 @@
+# Unity generated files
+Library
+Temp
+Obj
+Build
+Builds
+Logs
+UserSettings
+
+# macOS
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# MonoDevelop
+*.userprefs
