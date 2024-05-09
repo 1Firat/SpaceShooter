@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-
     public GameObject[] enemy;
     public GameObject ammoBox;
     public Transform enemySpawnPoint;
     private bool gameOver;
-    private int spawnPos = 170;
+    private int spawnPos = 650;
     private float ammoBoxSpawnTime;
-    private float enemySpawnCD;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +17,6 @@ public class SpawnManager : MonoBehaviour
         GameEvent.RegisterListener(EventListener);
 
         ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
-        enemySpawnCD = DifficultySelect.selected.enemySpawnCD;
         enemySpawnPoint = GameObject.FindWithTag("SpawnManager").transform;
         StartCoroutine(SpawnEnemy());
     }

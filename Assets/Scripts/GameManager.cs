@@ -12,24 +12,31 @@ public class GameManager : MonoBehaviour
     public bool isFire = false;
     public bool ammoBoxControl = false;
     public bool menuStatus = false;
+    public int playerScore;
 
     void Start()
     {
+        time = DifficultySelect.selected.time;
         GameEvent.RegisterListener(EventListener);
     }
 
     private void Update()
     {
-        time = DifficultySelect.selected.time;
         time -= Time.deltaTime;
 
-        EventGame gameTime = new("game_time",time);
+        EventGame gameTime = new("game_time", time);
         GameEvent.Raise(gameTime);
 
         if (time <= 0)
         {
             EventGame gameOver = new("time_is_up", 0);
             GameEvent.Raise(gameOver);
+        }
+        if (playerScore >= DifficultySelect.selected.winScore)
+        {
+            winControl = true;
+            EventGame gameStatus = new("player_win", 0);
+            GameEvent.Raise(gameStatus);
         }
     }
 
@@ -49,6 +56,10 @@ public class GameManager : MonoBehaviour
         {
             EventGame collectedAmmoBox = new("collected_ammobox", 0);
             GameEvent.Raise(collectedAmmoBox);
+        }
+        if (eg.type == "score")
+        {
+            playerScore = (int)eg.value;
         }
     }
 }

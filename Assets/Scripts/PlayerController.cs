@@ -60,11 +60,9 @@ public class PlayerController : MonoBehaviour
         if (bullet != null)
         {
             bullet.transform.position = transform.position;
-
-            bullet.SetActive(true);
-
             var script = bullet.GetComponent<Bullet>();
             script.GO(DifficultySelect.selected.bulletSpeed);
+            bullet.SetActive(true);
         }
     }
 

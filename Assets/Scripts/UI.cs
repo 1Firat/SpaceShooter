@@ -14,7 +14,6 @@ public class UI : MonoBehaviour
     public GameObject winText;
     public GameObject menuButton;
     public GameObject restartGameButton;
-    public GameObject quitButton;
 
     public GameObject heart1;
     public GameObject heart2;
@@ -26,6 +25,7 @@ public class UI : MonoBehaviour
     public int heart = 3;
     public int score;
     public bool gameOver;
+    public bool winControl;
 
     void Start()
     {
@@ -61,7 +61,11 @@ public class UI : MonoBehaviour
         {
             MenuControl();
             gameOverText.SetActive(true);
-            scoreText2.gameObject.SetActive(true);
+        }
+        if (winControl != false)
+        {
+            MenuControl();
+            winText.SetActive(true);
         }
     }
 
@@ -76,29 +80,34 @@ public class UI : MonoBehaviour
         scoreText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(false);
         menuButton.gameObject.SetActive(false);
+        scoreText2.gameObject.SetActive(true);
         restartGameButton.SetActive(true);
-        quitButton.gameObject.SetActive(true);
     }
 
     void EventListener(EventGame eg)
     {
         if (eg.type == "game_time")
         {
-            UpdateCountTimedown((int)eg.value);
+            timerText.text = "Time: " + (int)eg.value;
+        }
+        if (eg.type == "time_is_up")
+        {
+            gameOver = true;
         }
         if (eg.type == "game_score")
         {
-            UpdateScore((int)eg.value);
+            score += (int)eg.value;
+            scoreText.text = "Score: " + score;
+            scoreText2.text = "Your Score: " + score;
         }
         if (eg.type == "player_hit")
         {
             heart -= 1;
         }
-    }
-
-    void UpdateCountTimedown(int eventData)
-    {
-        timerText.text = "Time: " + eventData;
+        if (eg.type == "player_win")
+        {
+            winControl = true;
+        }
     }
 
     void UpdateScore(int eventData)
@@ -106,6 +115,9 @@ public class UI : MonoBehaviour
         score += eventData;
         scoreText.text = "Score: " + score;
         scoreText2.text = "Your Score: " + score;
+
+        EventGame pScore = new("score", score);
+        GameEvent.Raise(pScore);
     }
 
     public void MainMenu()

@@ -6,10 +6,10 @@ TagManager:
   tags:
   - Enemy
   - AmmoBox
-  - ' Bullet'
   - SpawnManager
   - ReloadBullet
   - DestroyEnemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

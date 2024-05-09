@@ -11,24 +11,27 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject != null && other.gameObject.CompareTag("DestroyEnemy"))
+        if (other.gameObject.CompareTag("DestroyEnemy"))
         {
             Destroy(gameObject);
-            EventGame gameScore = new("enemy_died",0);
+            EventGame gameScore = new("enemy_died", 0);
             GameEvent.Raise(gameScore);
         }
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            Debug.Log("ölmedim yaşıyom haha");
-            Destroy(gameObject);
-            EventGame gameScore = new("enemy_exploded", 0);
-            GameEvent.Raise(gameScore);
-        }
+
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
             EventGame playerHit = new("player_hit", 0);
             GameEvent.Raise(playerHit);
         }
+
+        if (other.gameObject.tag == "Bullet")
+        {
+            Destroy(gameObject);
+            other.gameObject.SetActive(false);
+            EventGame gameScore = new("enemy_exploded", 0);
+            GameEvent.Raise(gameScore);
+        }
+
     }
 }
