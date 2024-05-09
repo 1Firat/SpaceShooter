@@ -1,24 +1,23 @@
 ﻿<Properties StartupConfiguration="{28FCF307-BCEB-DF00-C466-08C29A16E02D}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DifficultySelect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemy.cs">
     <Files>
       <File FileName="Assets/Scripts/PlayerController.cs" Line="31" Column="61" />
-      <File FileName="Assets/Scripts/ObjectPool.cs" Line="34" Column="28" />
-      <File FileName="Assets/Scripts/Bullet.cs" Line="16" Column="61" />
-      <File FileName="Assets/Scripts/SpawnManager.cs" Line="34" Column="1" />
-      <File FileName="Assets/Scripts/EnemyMovement.cs" Line="11" Column="38" />
-      <File FileName="Assets/Scripts/Singleton.cs" Line="6" Column="38" />
-      <File FileName="Assets/Scripts/Enemy.cs" Line="31" Column="10" />
-      <File FileName="Assets/Scripts/UI.cs" Line="96" Column="1" />
-      <File FileName="Assets/Scripts/Difficulty.cs" Line="23" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="23" Column="32" />
-      <File FileName="Assets/Scripts/GameEvent.cs" Line="11" Column="1" />
-      <File FileName="Assets/Scripts/EventGame.cs" Line="12" Column="28" />
-      <File FileName="Assets/Scripts/DifficultyScript.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/ObjectPool.cs" />
+      <File FileName="Assets/Scripts/Bullet.cs" />
+      <File FileName="Assets/Scripts/SpawnManager.cs" />
+      <File FileName="Assets/Scripts/EnemyMovement.cs" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="34" Column="1" />
+      <File FileName="Assets/Scripts/UI.cs" />
+      <File FileName="Assets/Scripts/Difficulty.cs" />
+      <File FileName="Assets/Scripts/GameManager.cs" />
+      <File FileName="Assets/Scripts/GameEvent.cs" />
+      <File FileName="Assets/Scripts/EventGame.cs" />
+      <File FileName="Assets/Scripts/DifficultyScript.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="86403fbc-7d09-478f-be96-42e0749294fa" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="443140bb-3f8c-4f87-aba8-0f967136c61e" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
