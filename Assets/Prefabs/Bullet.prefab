@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 85cc38624ef3ca746aadd9e5364dab2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5502667
+      value: 5.62
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 85cc38624ef3ca746aadd9e5364dab2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -113,7 +113,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -154,4 +154,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6235016012651259931}
-  globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}

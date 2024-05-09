@@ -3,29 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public static class DifficultySelect 
 {
     public static Difficulty selected;
-    public static List<Difficulty> difficulties;
 
-
-
-
-    public static void Easy()
+    public static void Easy(Difficulty easy)
     {
-        selected = difficulties[0];
-        SceneManager.LoadScene(1);
+        selected = easy;
+        SceneManager.LoadScene("Game");
     }
 
-    public static void Medium()
+    public static void Medium(Difficulty medium)
     {
-        selected = difficulties[1];
-        SceneManager.LoadScene(1);
+        selected = medium;
+        SceneManager.LoadScene("Game");
     }
 
-    public static void Hard()
+    public static void Hard(Difficulty hard)
     {
-        selected = difficulties[2];
-        SceneManager.LoadScene(1);
+        selected = hard;
+        SceneManager.LoadScene("Game");
     }
 }

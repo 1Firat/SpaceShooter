@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463cddcb5af614f10bd44d15de9228ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}
   enemySpeed: 0
 --- !u!114 &-1258440712154741327
 MonoBehaviour:
@@ -161,4 +160,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a715bdc9d68fb43b0b9b7690c49e7bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalDifficulty: {fileID: 11400000, guid: d626f64ad1a524e7fad5a6e4f82983c2, type: 2}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b2ed42acee64d5c90041d80f60cc3f, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
+  difficultyType: medium
   enemySpeed: 130
   playerSpeed: 180
   bulletSpeed: 130
@@ -20,7 +21,7 @@ MonoBehaviour:
   time: 30
   fireRate: 2
   m_Points: 0
-  winScore: 0
+  winScore: 2000
   score: 0
   amountToPool: 7
   life: 3

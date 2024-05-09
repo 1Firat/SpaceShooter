@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Bullet"))
         {
+            Debug.Log("ölmedim yaşıyom haha");
             Destroy(gameObject);
             EventGame gameScore = new("enemy_exploded", 0);
             GameEvent.Raise(gameScore);

@@ -14,6 +14,7 @@ public class UI : MonoBehaviour
     public GameObject winText;
     public GameObject menuButton;
     public GameObject restartGameButton;
+    public GameObject quitButton;
 
     public GameObject heart1;
     public GameObject heart2;
@@ -74,8 +75,9 @@ public class UI : MonoBehaviour
         grayHeart3.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(false);
-        restartGameButton.SetActive(true);
         menuButton.gameObject.SetActive(false);
+        restartGameButton.SetActive(true);
+        quitButton.gameObject.SetActive(true);
     }
 
     void EventListener(EventGame eg)
@@ -108,10 +110,14 @@ public class UI : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Game");
     }
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Menu");
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

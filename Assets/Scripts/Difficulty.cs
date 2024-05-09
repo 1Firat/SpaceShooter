@@ -13,7 +13,7 @@ public class CustomDataEditor : Editor
 
         Difficulty data = (Difficulty)target;
 
-        data.enemySpeed = EditorGUILayout.Slider("Enemy Speed", data.enemySpeed, 0f, 1000f);
+        data.enemySpeed  = EditorGUILayout.Slider("Enemy Speed" , data.enemySpeed , 0f, 1000f);
         data.playerSpeed = EditorGUILayout.Slider("Player Speed", data.playerSpeed, 0f, 1000f);
         data.bulletSpeed = EditorGUILayout.Slider("Bullet Speed", data.bulletSpeed, 0f, 1000f);
         DrawDefaultInspector();
@@ -24,6 +24,8 @@ public class CustomDataEditor : Editor
 [CreateAssetMenu(fileName = "New Difficulty Type", menuName = "Difficulty Type")]
 public class Difficulty : ScriptableObject
 {
+    public string difficultyType;
+
     [HideInInspector]
     public float enemySpeed;
     [HideInInspector]

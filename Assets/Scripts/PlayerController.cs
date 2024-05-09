@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public bool gameOver;
     public bool isFire;
-    private int position = 175;
+    private int position = 650;
 
     // Start is called before the first frame update
     void Start()
