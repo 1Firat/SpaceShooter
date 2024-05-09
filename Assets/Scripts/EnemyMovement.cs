@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        enemySpeed = Singleton.selected.enemySpeed;
-        transform.Translate(Vector3.back * Singleton.selected.enemySpeed * Time.deltaTime);
+        enemySpeed = DifficultySelect.selected.enemySpeed;
+        transform.Translate(Vector3.back * DifficultySelect.selected.enemySpeed * Time.deltaTime);
     }
 }

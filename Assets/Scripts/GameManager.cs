@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        time = Singleton.selected.time;
+        time = DifficultySelect.selected.time;
         time -= Time.deltaTime;
 
         EventGame gameTime = new("game_time",time);

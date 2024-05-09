@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         Vector3 moveDirection = new Vector3(horizontalInput, 0f, 0f);
-        transform.Translate(moveDirection *  Singleton.selected.playerSpeed * Time.deltaTime, 0f);
+        transform.Translate(moveDirection * DifficultySelect.selected.playerSpeed * Time.deltaTime, 0f);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartFire();
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             bullet.SetActive(true);
 
             var script = bullet.GetComponent<Bullet>();
-            script.GO(Singleton.selected.bulletSpeed);
+            script.GO(DifficultySelect.selected.bulletSpeed);
         }
     }
 
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
         while (isFire)
         {
             FireBullet();
-            yield return new WaitForSeconds(Singleton.selected.fireRate);
+            yield return new WaitForSeconds(DifficultySelect.selected.fireRate);
         }
     }
 }

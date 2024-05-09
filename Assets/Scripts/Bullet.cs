@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
             k = 1;
         }
         var r = GetComponent<Rigidbody>();
-        r.velocity = new Vector3(0, 0, 1) * Singleton.selected.bulletSpeed * k;
+        r.velocity = new Vector3(0, 0, 1) * DifficultySelect.selected.bulletSpeed * k;
     }
 
     private void Update()

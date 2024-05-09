@@ -18,8 +18,8 @@ public class SpawnManager : MonoBehaviour
     {
         GameEvent.RegisterListener(EventListener);
 
-        ammoBoxSpawnTime = Singleton.selected.ammoBoxSpawnTime;
-        enemySpawnCD = Singleton.selected.enemySpawnCD;
+        ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
+        enemySpawnCD = DifficultySelect.selected.enemySpawnCD;
         enemySpawnPoint = GameObject.FindWithTag("SpawnManager").transform;
         StartCoroutine(SpawnEnemy());
     }
@@ -39,8 +39,8 @@ public class SpawnManager : MonoBehaviour
             Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 12.8f, 250);
             GameObject a = Instantiate(ammoBox, randomPos, enemySpawnPoint.rotation);
             EnemyMovement script = a.GetComponent<EnemyMovement>();
-            script.enemySpeed = Singleton.selected.enemySpeed;
-            ammoBoxSpawnTime = Singleton.selected.ammoBoxSpawnTime;
+            script.enemySpeed = DifficultySelect.selected.enemySpeed;
+            ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
         }
 
         if (gameOver != false)
@@ -93,10 +93,10 @@ public class SpawnManager : MonoBehaviour
 
             GameObject o = Instantiate(randomSpawnEnemy, randomPos, enemySpawnPoint.rotation);
             EnemyMovement script = o.GetComponent<EnemyMovement>();
-            script.enemySpeed = Singleton.selected.enemySpeed;
+            script.enemySpeed = DifficultySelect.selected.enemySpeed;
 
 
-            yield return new WaitForSeconds(Singleton.selected.enemySpawnCD);
+            yield return new WaitForSeconds(DifficultySelect.selected.enemySpawnCD);
         }
     }
 }

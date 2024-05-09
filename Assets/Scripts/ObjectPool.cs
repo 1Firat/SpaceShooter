@@ -25,7 +25,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (ammoBoxControl != false)
         {
-            Singleton.selected.amountToPool = 10;
+            DifficultySelect.selected.amountToPool = 10;
             AmmoBoxControlCD();
             ammoBoxControl = false;
         }
@@ -34,7 +34,7 @@ public class ObjectPool : MonoBehaviour
     public void SpawnAmmo()
     {
         pooledObjects = new List<GameObject>();
-        for (int i = 0; i < Singleton.selected.amountToPool; i++)
+        for (int i = 0; i < DifficultySelect.selected.amountToPool; i++)
         {
             GameObject tmp = Instantiate(objectToPool);
             tmp.SetActive(false);

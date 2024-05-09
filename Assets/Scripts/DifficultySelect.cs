@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DifficultySelect : MonoBehaviour
+public static class DifficultySelect 
 {
-    public void Easy()
-    {
-        EventGame gameDifficulty = new("easy", 0);
-        GameEvent.Raise(gameDifficulty);
+    public static Difficulty selected;
+    public static List<Difficulty> difficulties;
 
+
+
+
+    public static void Easy()
+    {
+        selected = difficulties[0];
+        SceneManager.LoadScene(1);
     }
 
-    public void Medium()
+    public static void Medium()
     {
-        EventGame gameDifficulty = new("medium", 0);
-        GameEvent.Raise(gameDifficulty);
+        selected = difficulties[1];
+        SceneManager.LoadScene(1);
     }
 
-    public void Hard()
+    public static void Hard()
     {
-        EventGame gameDifficulty = new("hard", 0);
-        GameEvent.Raise(gameDifficulty);
+        selected = difficulties[2];
+        SceneManager.LoadScene(1);
     }
-
 }
