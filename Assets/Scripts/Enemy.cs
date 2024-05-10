@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private void Update()
     {
-        
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -14,24 +14,38 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("DestroyEnemy"))
         {
             Destroy(gameObject);
-            EventGame enemyDied = new("enemy_died", 0);
-            GameEvent.Raise(enemyDied);
+            EnemyDied();
         }
 
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            EventGame playerHit = new("player_hit", 0);
-            GameEvent.Raise(playerHit);
+            PlayerHit();
         }
 
         if (other.gameObject.tag == "Bullet")
         {
             Destroy(gameObject);
             other.gameObject.SetActive(false);
-            EventGame enemyExploded = new("enemy_exploded", 0);
-            GameEvent.Raise(enemyExploded);
+            EnemyExploded();
         }
+    }
 
+    void EnemyDied()
+    {
+        EventGame enemyDied = new("enemy_died", 0);
+        GameEvent.Raise(enemyDied);
+    }
+
+    void PlayerHit()
+    {
+        EventGame playerHit = new("player_hit", 0);
+        GameEvent.Raise(playerHit);
+    }
+
+    void EnemyExploded()
+    {
+        EventGame enemyExploded = new("enemy_exploded", 0);
+        GameEvent.Raise(enemyExploded);
     }
 }

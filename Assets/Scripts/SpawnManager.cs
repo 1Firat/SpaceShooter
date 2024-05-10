@@ -33,7 +33,7 @@ public class SpawnManager : MonoBehaviour
 
         if (ammoBoxSpawnTime <= 0)
         {
-            Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 12.8f, 250);
+            Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 41.1f, 800);
             GameObject a = Instantiate(ammoBox, randomPos, enemySpawnPoint.rotation);
             EnemyMovement script = a.GetComponent<EnemyMovement>();
             script.enemySpeed = DifficultySelect.selected.enemySpeed;
@@ -70,7 +70,7 @@ public class SpawnManager : MonoBehaviour
                 Destroy(ammoBox);
             }
         }
-        
+
     }
 
     void EventListener(EventGame eg)

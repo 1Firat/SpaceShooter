@@ -14,8 +14,13 @@ public class GameManager : MonoBehaviour
     public bool menuStatus = false;
     public int score;
 
+    void OnEnable()
+    {
+        score = 0;
+    }
     void Start()
     {
+        score = 0;
         time = DifficultySelect.selected.time;
         GameEvent.RegisterListener(EventListener);
     }
@@ -27,7 +32,7 @@ public class GameManager : MonoBehaviour
         EventGame gameTime = new("game_time", time);
         GameEvent.Raise(gameTime);
 
-        if (time <= 0 )
+        if (time <= 0)
         {
             EventGame timeIsUp = new("time_is_up", 0);
             GameEvent.Raise(timeIsUp);
@@ -46,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (eg.type == "enemy_exploded")
         {
             score += 100;
+
             EventGame gameScore = new("change_score", score);
             GameEvent.Raise(gameScore);
         }
@@ -57,7 +63,7 @@ public class GameManager : MonoBehaviour
         }
         if (eg.type == "ammo_box_collected")
         {
-            EventGame collectedAmmoBox = new("collected_ammobox", 0);
+            EventGame collectedAmmoBox = new("collected_ammo_box", 0);
             GameEvent.Raise(collectedAmmoBox);
         }
     }

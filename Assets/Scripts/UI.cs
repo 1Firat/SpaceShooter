@@ -8,12 +8,12 @@ public class UI : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI scoreText2;
 
     public GameObject gameOverText;
     public GameObject winText;
     public GameObject menuButton;
     public GameObject restartGameButton;
+    public GameObject disableUI;
 
     public GameObject heart1;
     public GameObject heart2;
@@ -22,15 +22,14 @@ public class UI : MonoBehaviour
     public GameObject grayHeart2;
     public GameObject grayHeart3;
 
-    public int addScore = 100;
-    public int decreaseScore = 200;
     public int heart = 3;
-    public int score = 0;
     public bool gameOver;
     public bool winControl;
-
+    Vector3 startPos = new Vector3(-836f, 398f, 0f);
+    Vector3 endPos = new Vector3(67.6f, 0f, 0f);
     void Start()
     {
+
         GameEvent.RegisterListener(EventListener);
     }
 
@@ -61,36 +60,24 @@ public class UI : MonoBehaviour
         }
         if (gameOver != false && winControl != true)
         {
-            MenuControl();
+            disableUI.gameObject.SetActive(false);
+
+            scoreText.transform.position = endPos;
             gameOverText.SetActive(true);
         }
         if (winControl != false && gameOver != false)
         {
-            MenuControl();
+
+            disableUI.gameObject.SetActive(false);
             winText.SetActive(true);
         }
-    }
-
-    public void MenuControl()
-    {
-        heart1.gameObject.SetActive(false);
-        heart2.gameObject.SetActive(false);
-        heart3.gameObject.SetActive(false);
-        grayHeart1.gameObject.SetActive(false);
-        grayHeart2.gameObject.SetActive(false);
-        grayHeart3.gameObject.SetActive(false);
-        scoreText.gameObject.SetActive(false);
-        timerText.gameObject.SetActive(false);
-        menuButton.gameObject.SetActive(false);
-        scoreText2.gameObject.SetActive(true);
-        restartGameButton.SetActive(true);
     }
 
     void EventListener(EventGame eg)
     {
         if (eg.type == "game_time")
         {
-            timerText.text = "Time: " + (int)eg.value;
+            timerText.text = "Time: " + eg.value.ToString("0.##");
         }
         if (eg.type == "time_is_up")
         {
@@ -100,14 +87,7 @@ public class UI : MonoBehaviour
         if (eg.type == "change_score")
         {
             scoreText.text = "Score: " + eg.value;
-            scoreText2.text = "Your Score: " + eg.value;
-            Debug.Log("yazılan score: " + eg.value);
         }
-        //if (eg.type == "game_decrease_score")
-        //{
-        //    GameScore("decrease");
-        //}
-
 
         if (eg.type == "player_hit")
         {
@@ -119,24 +99,6 @@ public class UI : MonoBehaviour
             winControl = true;
         }
     }
-
-    //void GameScore(string type)
-    //{
-    //    if (type == "add")
-    //    {
-    //        score += addScore;
-    //        Debug.Log("eklenen score: "+score);
-    //    }
-    //    if (type == "decrease")
-    //    {
-    //        score -= decreaseScore;
-    //    }
-    //    scoreText.text = "Score: " + score;
-    //    scoreText2.text = "Your Score: " + score;
-    //    Debug.Log("yazılan score: " + score);
-    //    EventGame pScore = new("score", score);
-    //    GameEvent.Raise(pScore);
-    //}
 
     public void MainMenu()
     {
