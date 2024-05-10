@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
 
     public bool timeControl = false;
     public bool winControl = false;
-    public bool gameOverControl = false;
+    public bool gameOver = false;
     public bool isFire = false;
     public bool ammoBoxControl = false;
     public bool menuStatus = false;
-    public int playerScore;
+    public int score;
 
     void Start()
     {
@@ -27,12 +27,13 @@ public class GameManager : MonoBehaviour
         EventGame gameTime = new("game_time", time);
         GameEvent.Raise(gameTime);
 
-        if (time <= 0)
+        if (time <= 0 )
         {
-            EventGame gameOver = new("time_is_up", 0);
-            GameEvent.Raise(gameOver);
+            EventGame timeIsUp = new("time_is_up", 0);
+            GameEvent.Raise(timeIsUp);
+            gameOver = true;
         }
-        if (playerScore >= DifficultySelect.selected.winScore)
+        if (gameOver != false && score >= DifficultySelect.selected.winScore)
         {
             winControl = true;
             EventGame gameStatus = new("player_win", 0);
@@ -44,22 +45,20 @@ public class GameManager : MonoBehaviour
     {
         if (eg.type == "enemy_exploded")
         {
-            EventGame gameScore = new("game_score", 100);
+            score += 100;
+            EventGame gameScore = new("change_score", score);
             GameEvent.Raise(gameScore);
         }
         if (eg.type == "enemy_died")
         {
-            EventGame gameScore = new("game_score", -200);
+            score -= 200;
+            EventGame gameScore = new("change_score", score);
             GameEvent.Raise(gameScore);
         }
         if (eg.type == "ammo_box_collected")
         {
             EventGame collectedAmmoBox = new("collected_ammobox", 0);
             GameEvent.Raise(collectedAmmoBox);
-        }
-        if (eg.type == "score")
-        {
-            playerScore = (int)eg.value;
         }
     }
 }

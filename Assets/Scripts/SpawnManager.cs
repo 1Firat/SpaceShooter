@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject ammoBox;
     public Transform enemySpawnPoint;
     private bool gameOver;
-    private int spawnPos = 650;
+    private int spawnPos = 550;
     private float ammoBoxSpawnTime;
 
     // Start is called before the first frame update

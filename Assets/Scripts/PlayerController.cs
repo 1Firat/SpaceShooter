@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public bool gameOver;
     public bool isFire;
-    private int position = 650;
+    private int position = 550;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +80,15 @@ public class PlayerController : MonoBehaviour
         if (gameOver != true)
         {
             isFire = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("AmmoBox"))
+        {
+            EventGame ammoBox = new("ammo_box_collected", 0);
+            GameEvent.Raise(ammoBox);
         }
     }
 

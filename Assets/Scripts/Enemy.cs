@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("DestroyEnemy"))
         {
             Destroy(gameObject);
-            EventGame gameScore = new("enemy_died", 0);
-            GameEvent.Raise(gameScore);
+            EventGame enemyDied = new("enemy_died", 0);
+            GameEvent.Raise(enemyDied);
         }
 
         if (other.gameObject.CompareTag("Player"))
@@ -29,8 +29,8 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             other.gameObject.SetActive(false);
-            EventGame gameScore = new("enemy_exploded", 0);
-            GameEvent.Raise(gameScore);
+            EventGame enemyExploded = new("enemy_exploded", 0);
+            GameEvent.Raise(enemyExploded);
         }
 
     }

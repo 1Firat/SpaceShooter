@@ -27,8 +27,6 @@ public class Bullet : MonoBehaviour
         }
         if (other.gameObject.CompareTag("AmmoBox"))
         {
-            EventGame ammoBox = new("ammo_box_collected",0);
-            GameEvent.Raise(ammoBox);
             Destroy(other.gameObject);
         }
 

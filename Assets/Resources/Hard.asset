@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Hard
   m_EditorClassIdentifier: 
   difficultyType: hard
-  enemySpeed: 150
-  playerSpeed: 150
-  bulletSpeed: 150
+  enemySpeed: 400
+  playerSpeed: 800
+  bulletSpeed: 500
   enemySpawnCD: 1.3
   ammoBoxSpawnTime: 20
   time: 30
   fireRate: 2
   m_Points: 0
-  winScore: 2500
+  winScore: 2000
   score: 0
-  amountToPool: 4
+  amountToPool: 5
   life: 3

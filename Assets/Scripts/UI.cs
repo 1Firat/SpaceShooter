@@ -22,8 +22,10 @@ public class UI : MonoBehaviour
     public GameObject grayHeart2;
     public GameObject grayHeart3;
 
+    public int addScore = 100;
+    public int decreaseScore = 200;
     public int heart = 3;
-    public int score;
+    public int score = 0;
     public bool gameOver;
     public bool winControl;
 
@@ -57,12 +59,12 @@ public class UI : MonoBehaviour
             GameEvent.Raise(playerDeath);
             gameOver = true;
         }
-        if (gameOver != false)
+        if (gameOver != false && winControl != true)
         {
             MenuControl();
             gameOverText.SetActive(true);
         }
-        if (winControl != false)
+        if (winControl != false && gameOver != false)
         {
             MenuControl();
             winText.SetActive(true);
@@ -94,31 +96,47 @@ public class UI : MonoBehaviour
         {
             gameOver = true;
         }
-        if (eg.type == "game_score")
+
+        if (eg.type == "change_score")
         {
-            score += (int)eg.value;
-            scoreText.text = "Score: " + score;
-            scoreText2.text = "Your Score: " + score;
+            scoreText.text = "Score: " + eg.value;
+            scoreText2.text = "Your Score: " + eg.value;
+            Debug.Log("yazılan score: " + eg.value);
         }
+        //if (eg.type == "game_decrease_score")
+        //{
+        //    GameScore("decrease");
+        //}
+
+
         if (eg.type == "player_hit")
         {
             heart -= 1;
         }
+
         if (eg.type == "player_win")
         {
             winControl = true;
         }
     }
 
-    void UpdateScore(int eventData)
-    {
-        score += eventData;
-        scoreText.text = "Score: " + score;
-        scoreText2.text = "Your Score: " + score;
-
-        EventGame pScore = new("score", score);
-        GameEvent.Raise(pScore);
-    }
+    //void GameScore(string type)
+    //{
+    //    if (type == "add")
+    //    {
+    //        score += addScore;
+    //        Debug.Log("eklenen score: "+score);
+    //    }
+    //    if (type == "decrease")
+    //    {
+    //        score -= decreaseScore;
+    //    }
+    //    scoreText.text = "Score: " + score;
+    //    scoreText2.text = "Your Score: " + score;
+    //    Debug.Log("yazılan score: " + score);
+    //    EventGame pScore = new("score", score);
+    //    GameEvent.Raise(pScore);
+    //}
 
     public void MainMenu()
     {

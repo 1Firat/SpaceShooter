@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: 
   difficultyType: easy
-  enemySpeed: 407
-  playerSpeed: 558
-  bulletSpeed: 418
+  enemySpeed: 300
+  playerSpeed: 600
+  bulletSpeed: 450
   enemySpawnCD: 2
   ammoBoxSpawnTime: 10
-  time: 30
+  time: 10
   fireRate: 2
   m_Points: 0
-  winScore: 1500
+  winScore: 1600
   score: 0
   amountToPool: 50
   life: 3

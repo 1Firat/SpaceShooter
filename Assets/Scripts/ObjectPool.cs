@@ -9,6 +9,7 @@ public class ObjectPool : MonoBehaviour
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public bool ammoBoxControl;
+    public int amountToPool;
 
     void Awake()
     {
@@ -25,9 +26,13 @@ public class ObjectPool : MonoBehaviour
     {
         if (ammoBoxControl != false)
         {
-            DifficultySelect.selected.amountToPool = 10;
+            amountToPool = 100;
             AmmoBoxControlCD();
             ammoBoxControl = false;
+        }
+        if(ammoBoxControl != true)
+        {
+            amountToPool = DifficultySelect.selected.amountToPool;
         }
     }
 
@@ -64,7 +69,7 @@ public class ObjectPool : MonoBehaviour
 
     void EventListener(EventGame eg)
     {
-        if (eg.type == "collected_ammobox")
+        if (eg.type == "ammo_box_collected")
         {
             ammoBoxControl = true;
         }

@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   difficultyType: medium
-  enemySpeed: 130
-  playerSpeed: 180
-  bulletSpeed: 130
+  enemySpeed: 400
+  playerSpeed: 550
+  bulletSpeed: 450
   enemySpawnCD: 1.5
   ammoBoxSpawnTime: 15
   time: 30
   fireRate: 2
   m_Points: 0
-  winScore: 2000
+  winScore: 1500
   score: 0
   amountToPool: 7
   life: 3
