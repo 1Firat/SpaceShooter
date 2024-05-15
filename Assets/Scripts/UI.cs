@@ -8,7 +8,8 @@ public class UI : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
-
+    public TextMeshProUGUI scoreText2;
+    public GameObject enableUI;
     public GameObject gameOverText;
     public GameObject winText;
     public GameObject menuButton;
@@ -60,15 +61,13 @@ public class UI : MonoBehaviour
         if (gameOver != false && winControl != true)
         {
             disableUI.gameObject.SetActive(false);
-            restartGameButton.gameObject.SetActive(true);
-            scoreText.transform.position = endPos;
-            scoreText.fontSize = 100;
+            enableUI.gameObject.SetActive(true);
             gameOverText.SetActive(true);
         }
         if (winControl != false && gameOver != false)
         {
             disableUI.gameObject.SetActive(false);
-            restartGameButton.gameObject.SetActive(true);
+            enableUI.gameObject.SetActive(true);
             winText.SetActive(true);
         }
     }
@@ -87,6 +86,7 @@ public class UI : MonoBehaviour
         if (eg.type == Constant.changeScore)
         {
             scoreText.text = "Score: " + eg.value;
+            scoreText2.text = "Your Score: " + scoreText.text;
         }
 
         if (eg.type == Constant.playerHit)
