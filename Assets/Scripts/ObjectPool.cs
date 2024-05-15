@@ -19,7 +19,7 @@ public class ObjectPool : MonoBehaviour
     void Start()
     {
         GameEvent.RegisterListener(EventListener);
-        amountToPool = DifficultySelect.selected.amountToPool;
+        amountToPool = DifficultySelect.selected.currentAmmo;
         SpawnAmmo();
     }
 
@@ -27,14 +27,12 @@ public class ObjectPool : MonoBehaviour
     {
         if (ammoBoxControl != false)
         {
+            int deletedListObject = DifficultySelect.selected.maxAmmo - DifficultySelect.selected.currentAmmo;
             amountToPool = 100;
             SpawnAmmo();
             AmmoBoxControlCD();
+            pooledObjects.RemoveRange(0, deletedListObject);
             ammoBoxControl = false;
-        }
-        if (ammoBoxControl != true)
-        {
-            amountToPool = DifficultySelect.selected.amountToPool;
         }
     }
 
@@ -46,6 +44,7 @@ public class ObjectPool : MonoBehaviour
             GameObject tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
+            Debug.Log("count: " + pooledObjects.Count);
         }
     }
 
@@ -59,19 +58,19 @@ public class ObjectPool : MonoBehaviour
             }
         }
 
-        if (ammoBoxControl != false)
-        {
-            GameObject newObj = Instantiate(objectToPool);
-            newObj.SetActive(false);
-            pooledObjects.Add(newObj);
-            return newObj;
-        }
+        // if (ammoBoxControl != false)
+        // {
+        //     GameObject newObj = Instantiate(objectToPool);
+        //     newObj.SetActive(false);
+        //     pooledObjects.Add(newObj);
+        //     return newObj;
+        // }
         return null;
     }
 
     void EventListener(EventGame eg)
     {
-        if (eg.type == Constant.ammoBoxCollected)
+        if (eg.type == Constant.collectedAmmoBox)
         {
             ammoBoxControl = true;
         }

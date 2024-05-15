@@ -10,14 +10,18 @@ public class AmmoBox : MonoBehaviour
         {
             Destroy(gameObject);
             other.gameObject.SetActive(false);
+            EventGame enemyExploded = new(Constant.ammoBoxCollected, 0);
+            GameEvent.Raise(enemyExploded);
         }
-
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            other.gameObject.SetActive(false);
             EventGame enemyExploded = new(Constant.ammoBoxCollected, 0);
             GameEvent.Raise(enemyExploded);
+        }
+        if (other.gameObject.CompareTag("DestroyEnemy"))
+        {
+            Destroy(gameObject);
         }
     }
 }

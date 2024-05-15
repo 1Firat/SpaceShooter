@@ -26,7 +26,6 @@ public class UI : MonoBehaviour
     public int heart = 3;
     public bool gameOver;
     public bool winControl;
-    Vector3 endPos = new Vector3(24f, -9f, 0f);
     void Start()
     {
 
@@ -86,7 +85,7 @@ public class UI : MonoBehaviour
         if (eg.type == Constant.changeScore)
         {
             scoreText.text = "Score: " + eg.value;
-            scoreText2.text = "Your Score: " + scoreText.text;
+            scoreText2.text = "Your " + scoreText.text;
         }
 
         if (eg.type == Constant.playerHit)

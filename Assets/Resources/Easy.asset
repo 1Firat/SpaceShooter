@@ -18,10 +18,11 @@ MonoBehaviour:
   bulletSpeed: 450
   enemySpawnCD: 2
   ammoBoxSpawnTime: 10
-  time: 10
+  time: 60
   fireRate: 2
   m_Points: 0
   winScore: 1600
   score: 0
-  amountToPool: 10
+  maxAmmo: 100
+  currentAmmo: 4
   life: 3

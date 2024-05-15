@@ -13,4 +13,5 @@ public static class Constant
     public readonly static string playerWin = "player_win";
     public readonly static string changeScore = "change_score";
     public readonly static string playerDeath = "player_death";
+    public readonly static string collectedAmmoBox = "collected_ammo_box";
 }

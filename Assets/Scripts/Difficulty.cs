@@ -13,7 +13,7 @@ public class CustomDataEditor : Editor
 
         Difficulty data = (Difficulty)target;
 
-        data.enemySpeed  = EditorGUILayout.Slider("Enemy Speed" , data.enemySpeed , 0f, 1000f);
+        data.enemySpeed = EditorGUILayout.Slider("Enemy Speed", data.enemySpeed, 0f, 1000f);
         data.playerSpeed = EditorGUILayout.Slider("Player Speed", data.playerSpeed, 0f, 1000f);
         data.bulletSpeed = EditorGUILayout.Slider("Bullet Speed", data.bulletSpeed, 0f, 1000f);
         DrawDefaultInspector();
@@ -42,7 +42,8 @@ public class Difficulty : ScriptableObject
     public int winScore;
     [HideInInspector]
     public int score;
-    public int amountToPool;
+    public int maxAmmo;
+    public int currentAmmo;
     public int life;
 
 }

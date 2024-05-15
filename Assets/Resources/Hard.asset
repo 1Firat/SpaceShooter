@@ -23,5 +23,6 @@ MonoBehaviour:
   m_Points: 0
   winScore: 2000
   score: 0
-  amountToPool: 5
+  maxAmmo: 100
+  currentAmmo: 4
   life: 3

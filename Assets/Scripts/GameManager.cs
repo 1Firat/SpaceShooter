@@ -59,5 +59,10 @@ public class GameManager : MonoBehaviour
             EventGame gameScore = new(Constant.changeScore, score);
             GameEvent.Raise(gameScore);
         }
+        if (eg.type == Constant.ammoBoxCollected)
+        {
+            EventGame ammoBoxCollected = new(Constant.collectedAmmoBox, 0);
+            GameEvent.Raise(ammoBoxCollected);
+        }
     }
 }
