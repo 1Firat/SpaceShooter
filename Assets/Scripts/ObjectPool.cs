@@ -19,6 +19,7 @@ public class ObjectPool : MonoBehaviour
     void Start()
     {
         GameEvent.RegisterListener(EventListener);
+        amountToPool = DifficultySelect.selected.amountToPool;
         SpawnAmmo();
     }
 
@@ -27,10 +28,11 @@ public class ObjectPool : MonoBehaviour
         if (ammoBoxControl != false)
         {
             amountToPool = 100;
+            SpawnAmmo();
             AmmoBoxControlCD();
             ammoBoxControl = false;
         }
-        if(ammoBoxControl != true)
+        if (ammoBoxControl != true)
         {
             amountToPool = DifficultySelect.selected.amountToPool;
         }
@@ -39,7 +41,7 @@ public class ObjectPool : MonoBehaviour
     public void SpawnAmmo()
     {
         pooledObjects = new List<GameObject>();
-        for (int i = 0; i < DifficultySelect.selected.amountToPool; i++)
+        for (int i = 0; i < amountToPool; i++)
         {
             GameObject tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
@@ -69,7 +71,7 @@ public class ObjectPool : MonoBehaviour
 
     void EventListener(EventGame eg)
     {
-        if (eg.type == "ammo_box_collected")
+        if (eg.type == Constant.ammoBoxCollected)
         {
             ammoBoxControl = true;
         }
@@ -77,6 +79,6 @@ public class ObjectPool : MonoBehaviour
 
     IEnumerator AmmoBoxControlCD()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
     }
 }

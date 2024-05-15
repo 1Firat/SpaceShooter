@@ -33,19 +33,19 @@ public class Enemy : MonoBehaviour
 
     void EnemyDied()
     {
-        EventGame enemyDied = new("enemy_died", 0);
-        GameEvent.Raise(enemyDied);
+        EventGame enemyDie = new(Constant.enemyDied, 0);
+        GameEvent.Raise(enemyDie);
     }
 
     void PlayerHit()
     {
-        EventGame playerHit = new("player_hit", 0);
-        GameEvent.Raise(playerHit);
+        EventGame playerGetHit = new(Constant.playerHit, 0);
+        GameEvent.Raise(playerGetHit);
     }
 
     void EnemyExploded()
     {
-        EventGame enemyExploded = new("enemy_exploded", 0);
-        GameEvent.Raise(enemyExploded);
+        EventGame enemyExplode = new(Constant.enemyExploded, 0);
+        GameEvent.Raise(enemyExplode);
     }
 }

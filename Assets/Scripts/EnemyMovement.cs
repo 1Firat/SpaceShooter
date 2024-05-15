@@ -9,6 +9,6 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         enemySpeed = DifficultySelect.selected.enemySpeed;
-        transform.Translate(Vector3.back * DifficultySelect.selected.enemySpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * DifficultySelect.selected.enemySpeed * Time.deltaTime);
     }
 }

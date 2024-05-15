@@ -10,7 +10,7 @@ public class AmmoBox : MonoBehaviour
         {
             Destroy(gameObject);
             other.gameObject.SetActive(false);
-            EventGame enemyExploded = new("ammo_box_collected", 0);
+            EventGame enemyExploded = new(Constant.ammoBoxCollected, 0);
             GameEvent.Raise(enemyExploded);
         }
 

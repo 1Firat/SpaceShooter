@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     void EventListener(EventGame eg)
     {
-        if (eg.type == "time_is_up" || eg.type == "player_death")
+        if (eg.type == Constant.gameTimeIsUP || eg.type == Constant.playerDeath)
         {
             gameOver = true;
         }
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AmmoBox"))
         {
-            EventGame ammoBox = new("ammo_box_collected", 0);
+            EventGame ammoBox = new(Constant.ammoBoxCollected, 0);
             GameEvent.Raise(ammoBox);
         }
     }

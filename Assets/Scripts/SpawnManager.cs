@@ -75,7 +75,7 @@ public class SpawnManager : MonoBehaviour
 
     void EventListener(EventGame eg)
     {
-        if (eg.type == "player_death" || eg.type == "time_is_up")
+        if (eg.type == Constant.playerDeath || eg.type == Constant.gameTimeIsUP)
         {
             gameOver = true;
         }

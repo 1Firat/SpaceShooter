@@ -10,7 +10,6 @@ public class DifficultyScript : MonoBehaviour
     public void Easy()
     {
         Difficulty easyDifficulty = difficulties.Find(difficulty => difficulty.difficultyType == "easy");
-        Debug.Log("easyDifficulty: " + easyDifficulty);
         DifficultySelect.Medium(easyDifficulty);
     }
     public void Medium()

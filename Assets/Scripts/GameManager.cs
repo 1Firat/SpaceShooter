@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public bool winControl = false;
     public bool gameOver = false;
     public bool isFire = false;
-    public bool ammoBoxControl = false;
     public bool menuStatus = false;
     public int score;
 
@@ -18,9 +17,9 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
     }
+
     void Start()
     {
-        score = 0;
         time = DifficultySelect.selected.time;
         GameEvent.RegisterListener(EventListener);
     }
@@ -29,42 +28,36 @@ public class GameManager : MonoBehaviour
     {
         time -= Time.deltaTime;
 
-        EventGame gameTime = new("game_time", time);
+        EventGame gameTime = new(Constant.gameTimer, time);
         GameEvent.Raise(gameTime);
 
         if (time <= 0)
         {
-            EventGame timeIsUp = new("time_is_up", 0);
+            EventGame timeIsUp = new(Constant.gameTimeIsUP, 0);
             GameEvent.Raise(timeIsUp);
             gameOver = true;
         }
         if (gameOver != false && score >= DifficultySelect.selected.winScore)
         {
             winControl = true;
-            EventGame gameStatus = new("player_win", 0);
+            EventGame gameStatus = new(Constant.playerWin, 0);
             GameEvent.Raise(gameStatus);
         }
     }
-
     void EventListener(EventGame eg)
     {
-        if (eg.type == "enemy_exploded")
+        if (eg.type == Constant.enemyExploded)
         {
             score += 100;
 
-            EventGame gameScore = new("change_score", score);
+            EventGame gameScore = new(Constant.changeScore, score);
             GameEvent.Raise(gameScore);
         }
-        if (eg.type == "enemy_died")
+        if (eg.type == Constant.enemyDied)
         {
             score -= 200;
-            EventGame gameScore = new("change_score", score);
+            EventGame gameScore = new(Constant.changeScore, score);
             GameEvent.Raise(gameScore);
-        }
-        if (eg.type == "ammo_box_collected")
-        {
-            EventGame collectedAmmoBox = new("collected_ammo_box", 0);
-            GameEvent.Raise(collectedAmmoBox);
         }
     }
 }
