@@ -44,12 +44,12 @@ public class ObjectPool : MonoBehaviour
             GameObject tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
-            Debug.Log("count: " + pooledObjects.Count);
         }
     }
 
     public GameObject GetPooledObject()
     {
+        Debug.Log("ammo box false gerekli: " + ammoBoxControl);
         for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
@@ -58,13 +58,14 @@ public class ObjectPool : MonoBehaviour
             }
         }
 
-        // if (ammoBoxControl != false)
-        // {
-        //     GameObject newObj = Instantiate(objectToPool);
-        //     newObj.SetActive(false);
-        //     pooledObjects.Add(newObj);
-        //     return newObj;
-        // }
+
+        if (ammoBoxControl != false)
+        {
+            GameObject newObj = Instantiate(objectToPool);
+            newObj.SetActive(false);
+            pooledObjects.Add(newObj);
+            return newObj;
+        }
         return null;
     }
 
@@ -72,6 +73,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (eg.type == Constant.collectedAmmoBox)
         {
+            Debug.Log("ammo box control true");
             ammoBoxControl = true;
         }
     }

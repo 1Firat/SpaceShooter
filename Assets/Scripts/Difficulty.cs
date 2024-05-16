@@ -10,12 +10,10 @@ public class CustomDataEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-
         Difficulty data = (Difficulty)target;
-
-        data.enemySpeed = EditorGUILayout.Slider("Enemy Speed", data.enemySpeed, 0f, 1000f);
-        data.playerSpeed = EditorGUILayout.Slider("Player Speed", data.playerSpeed, 0f, 1000f);
-        data.bulletSpeed = EditorGUILayout.Slider("Bullet Speed", data.bulletSpeed, 0f, 1000f);
+        data.enemySpeed = EditorGUILayout.Slider("Enemy Speed", data.enemySpeed, 0f, 2000f);
+        data.playerSpeed = EditorGUILayout.Slider("Player Speed", data.playerSpeed, 0f, 2000f);
+        data.bulletSpeed = EditorGUILayout.Slider("Bullet Speed", data.bulletSpeed, 0f, 2000f);
         DrawDefaultInspector();
     }
 }
@@ -25,7 +23,6 @@ public class CustomDataEditor : Editor
 public class Difficulty : ScriptableObject
 {
     public string difficultyType;
-
     [HideInInspector]
     public float enemySpeed;
     [HideInInspector]
@@ -45,5 +42,4 @@ public class Difficulty : ScriptableObject
     public int maxAmmo;
     public int currentAmmo;
     public int life;
-
 }
