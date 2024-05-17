@@ -33,7 +33,6 @@ public class Difficulty : ScriptableObject
     public float ammoBoxSpawnTime;
     public float time;
     public float fireRate;
-
     [HideInInspector]
     public int m_Points;
     public int winScore;

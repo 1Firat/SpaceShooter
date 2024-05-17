@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
+    public ParticleSystem enemyDiedEffect;
+    public ParticleSystem playerHitEffect;
     private void Update()
     {
 
@@ -25,7 +28,12 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Bullet"))
         {
+            Vector3 effectPos = transform.position;
+            // var effect = (Instantiate(enemyDiedEffect, ), Quaternion.identity);
+            enemyDiedEffect.gameObject.SetActive(true);
+            Debug.Log("enemyDied: " + enemyDiedEffect);
             Destroy(gameObject);
+            EffectCD();
             other.gameObject.SetActive(false);
             EnemyExploded();
         }
@@ -47,5 +55,9 @@ public class Enemy : MonoBehaviour
     {
         EventGame enemyExplode = new(Constant.enemyExploded, 0);
         GameEvent.Raise(enemyExplode);
+    }
+    IEnumerator EffectCD()
+    {
+        yield return new WaitForSeconds(1);
     }
 }

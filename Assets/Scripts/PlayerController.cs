@@ -28,7 +28,12 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         Vector3 moveDirection = new Vector3(horizontalInput, 0f, 0f);
+        if (horizontalInput == 0f)
+        {
+            moveDirection = Vector3.zero;
+        }
         transform.Translate(moveDirection * DifficultySelect.selected.playerSpeed * Time.deltaTime, 0f);
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartFire();

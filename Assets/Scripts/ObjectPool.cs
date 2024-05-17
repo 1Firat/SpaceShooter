@@ -49,7 +49,6 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
-        Debug.Log("ammo box false gerekli: " + ammoBoxControl);
         for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
