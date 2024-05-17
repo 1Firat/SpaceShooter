@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class GameManager : MonoBehaviour
     public bool isFire = false;
     public bool menuStatus = false;
     public int score;
+    public GameObject endGame;
+    public GameObject dLight;
+    public GameObject redLight;
+    public GameObject greenLight;
 
     void OnEnable()
     {
@@ -20,12 +25,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         time = DifficultySelect.selected.time;
         GameEvent.RegisterListener(EventListener);
     }
 
     private void Update()
     {
+        Debug.Log("GameControl: " + gameOver + "        wincontrol " + winControl);
         time -= Time.deltaTime;
 
         EventGame gameTime = new(Constant.gameTimer, time);
@@ -33,15 +40,27 @@ public class GameManager : MonoBehaviour
 
         if (time <= 0)
         {
+            gameOver = true;
             EventGame timeIsUp = new(Constant.gameTimeIsUP, 0);
             GameEvent.Raise(timeIsUp);
-            gameOver = true;
         }
         if (gameOver != false && score >= DifficultySelect.selected.winScore)
         {
             winControl = true;
             EventGame gameStatus = new(Constant.playerWin, 0);
             GameEvent.Raise(gameStatus);
+        }
+        if (gameOver != false)
+        {
+            endGame.gameObject.SetActive(true);
+            dLight.gameObject.SetActive(false);
+            redLight.gameObject.SetActive(true);
+        }
+        if (winControl != false)
+        {
+            endGame.gameObject.SetActive(true);
+            dLight.gameObject.SetActive(false);
+            greenLight.gameObject.SetActive(true);
         }
     }
     void EventListener(EventGame eg)
@@ -63,6 +82,10 @@ public class GameManager : MonoBehaviour
         {
             EventGame ammoBoxCollected = new(Constant.collectedAmmoBox, 0);
             GameEvent.Raise(ammoBoxCollected);
+        }
+        if (eg.type == Constant.playerDeath)
+        {
+            gameOver = true;
         }
     }
 }

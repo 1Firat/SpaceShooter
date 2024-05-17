@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public bool gameOver;
     public bool isFire;
     private int position = 550;
+    public ParticleSystem hitEffect;
+    public ParticleSystem collectAmmoBoxEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -92,8 +94,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AmmoBox"))
         {
+            collectAmmoBoxEffect.gameObject.SetActive(true);
+            collectAmmoBoxEffect.Play();
+            StartCoroutine(DestroyAfterEffect("ammo_box"));
             EventGame ammoBox = new(Constant.ammoBoxCollected, 0);
             GameEvent.Raise(ammoBox);
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            hitEffect.gameObject.SetActive(true);
+            hitEffect.Play();
+            StartCoroutine(DestroyAfterEffect("player_hit"));
         }
     }
 
@@ -104,5 +115,29 @@ public class PlayerController : MonoBehaviour
             FireBullet();
             yield return new WaitForSeconds(DifficultySelect.selected.fireRate);
         }
+    }
+
+    private IEnumerator DestroyAfterEffect(string effectType)
+    {
+        if (effectType == "ammo_box")
+        {
+            float ammoBoxEffectDuration = collectAmmoBoxEffect.main.duration;
+
+            yield return new WaitForSeconds(ammoBoxEffectDuration);
+            Debug.Log("ammobox effecti kapatildi");
+            collectAmmoBoxEffect.Stop();
+            collectAmmoBoxEffect.gameObject.SetActive(false);
+        }
+
+        if (effectType == "player_hit")
+        {
+            float hitEffectDuration = hitEffect.main.duration;
+
+            yield return new WaitForSeconds(hitEffectDuration);
+            Debug.Log("playerhit effecti kapatildi");
+            hitEffect.Stop();
+            hitEffect.gameObject.SetActive(false);
+        }
+
     }
 }

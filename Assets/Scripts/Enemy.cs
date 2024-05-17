@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
     public ParticleSystem enemyDiedEffect;
-    public ParticleSystem playerHitEffect;
+
+    private void Start()
+    {
+
+    }
     private void Update()
     {
 
@@ -28,12 +33,9 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Bullet"))
         {
-            Vector3 effectPos = transform.position;
-            // var effect = (Instantiate(enemyDiedEffect, ), Quaternion.identity);
             enemyDiedEffect.gameObject.SetActive(true);
-            Debug.Log("enemyDied: " + enemyDiedEffect);
-            Destroy(gameObject);
-            EffectCD();
+            enemyDiedEffect.Play();
+            StartCoroutine(DestroyAfterEffect());
             other.gameObject.SetActive(false);
             EnemyExploded();
         }
@@ -56,8 +58,15 @@ public class Enemy : MonoBehaviour
         EventGame enemyExplode = new(Constant.enemyExploded, 0);
         GameEvent.Raise(enemyExplode);
     }
-    IEnumerator EffectCD()
+
+    private IEnumerator DestroyAfterEffect()
     {
-        yield return new WaitForSeconds(1);
+        float effectDuration = enemyDiedEffect.main.duration;
+
+        yield return new WaitForSeconds(0.07f);
+
+        enemyDiedEffect.Stop();
+        enemyDiedEffect.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

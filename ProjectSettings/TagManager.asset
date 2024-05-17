@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
   - AmmoBox
   - SpawnManager
   - ReloadBullet
   - DestroyEnemy
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

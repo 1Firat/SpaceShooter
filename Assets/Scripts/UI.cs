@@ -34,6 +34,7 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Heart " + heart);
         if (heart == 3)
         {
             heart1.gameObject.SetActive(true);
@@ -49,7 +50,7 @@ public class UI : MonoBehaviour
             heart1.gameObject.SetActive(false);
             heart2.gameObject.SetActive(false);
         }
-        if (heart == 0)
+        if (heart <= 0)
         {
             heart3.gameObject.SetActive(false);
 
@@ -98,7 +99,6 @@ public class UI : MonoBehaviour
             winControl = true;
         }
     }
-
     public void MainMenu()
     {
         SceneManager.LoadScene("Menu");
