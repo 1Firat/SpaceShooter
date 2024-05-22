@@ -37,7 +37,7 @@ public class SpawnManager : MonoBehaviour
             GameObject a = Instantiate(ammoBox, randomPos, enemySpawnPoint.rotation);
             EnemyMovement script = a.GetComponent<EnemyMovement>();
             script.enemySpeed = DifficultySelect.selected.enemySpeed;
-            ammoBoxSpawnTime = 60;
+            ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
         }
 
         if (gameOver != false)

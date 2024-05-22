@@ -23,6 +23,8 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("ReloadBullet"))
         {
             ObjectPool.SharedInstance.GetPooledObject();
+            EventGame ammoReturned = new(Constant.returnAmmo, 0);
+            GameEvent.Raise(ammoReturned);
             bullet.SetActive(false);
         }
         if (other.gameObject.CompareTag("AmmoBox"))

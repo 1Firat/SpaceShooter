@@ -34,7 +34,6 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Heart " + heart);
         if (heart == 3)
         {
             heart1.gameObject.SetActive(true);

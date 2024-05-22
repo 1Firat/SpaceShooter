@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public bool gameOver;
     public bool isFire;
+    private bool ammoMaxed;
     private int position = 550;
     public ParticleSystem hitEffect;
     public ParticleSystem collectAmmoBoxEffect;
@@ -22,6 +23,14 @@ public class PlayerController : MonoBehaviour
         {
             gameOver = true;
         }
+        if (eg.type == Constant.ammoMax)
+        {
+            ammoMaxed = true;
+        }
+        if (eg.type == Constant.ammoNotMax)
+        {
+            ammoMaxed = false;
+        }
     }
     void Update()
     {
@@ -35,6 +44,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (ammoMaxed)
+            {
+                return;
+            }
             StartFire();
         }
         else if (Input.GetKeyUp(KeyCode.Space))
@@ -52,7 +65,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(position, transform.position.y, transform.position.z);
         }
 
-        if (gameOver != false)
+        if (gameOver)
         {
             Destroy(gameObject);
         }
@@ -63,6 +76,8 @@ public class PlayerController : MonoBehaviour
         GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
         if (bullet != null)
         {
+            EventGame ammoUsed = new(Constant.useAmmo, 0);
+            GameEvent.Raise(ammoUsed);
             bullet.transform.position = transform.position;
             var script = bullet.GetComponent<Bullet>();
             script.GO(DifficultySelect.selected.bulletSpeed);
@@ -72,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     void StartFire()
     {
-        if (gameOver != true)
+        if (!gameOver)
         {
             isFire = true;
             StartCoroutine(FireRoutine());
@@ -81,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     void StopFire()
     {
-        if (gameOver != true)
+        if (!gameOver)
         {
             isFire = false;
         }

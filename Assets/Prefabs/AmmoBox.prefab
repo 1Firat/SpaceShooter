@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240eed47e8f6645c58f4371cb9c27a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDiedEffect: {fileID: 0}
+  ammoBoxDiedEffect: {fileID: 5478085464869919306}
 --- !u!1 &505609849527416383
 GameObject:
   m_ObjectHideFlags: 0
@@ -5367,8 +5367,8 @@ Transform:
   m_GameObject: {fileID: 3036742972887464941}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 200.1278, y: -124.365456, z: 102.93152}
-  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_LocalPosition: {x: 34.5, y: -27.6, z: -3}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3379082478294078678}

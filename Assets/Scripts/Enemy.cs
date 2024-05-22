@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
             enemyDiedEffect.gameObject.SetActive(true);
             enemyDiedEffect.Play();
             StartCoroutine(DestroyAfterEffect());
+            EventGame ammoReturned = new(Constant.returnAmmo, 0);
+            GameEvent.Raise(ammoReturned);
             other.gameObject.SetActive(false);
             EnemyExploded();
         }
@@ -45,8 +47,6 @@ public class Enemy : MonoBehaviour
         EventGame enemyDie = new(Constant.enemyDied, 0);
         GameEvent.Raise(enemyDie);
     }
-
-
 
     void EnemyExploded()
     {

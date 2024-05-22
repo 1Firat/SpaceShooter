@@ -39,6 +39,7 @@ public class Difficulty : ScriptableObject
     [HideInInspector]
     public int score;
     public int maxAmmo;
-    public int currentAmmo;
+    public int startAmmo;
+    public int ammoBoxMaxAmmo;
     public int life;
 }

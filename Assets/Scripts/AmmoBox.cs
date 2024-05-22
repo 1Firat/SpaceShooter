@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class AmmoBox : MonoBehaviour
 {
-    public ParticleSystem enemyDiedEffect;
+    public ParticleSystem ammoBoxDiedEffect;
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            enemyDiedEffect.gameObject.SetActive(true);
-            enemyDiedEffect.Play();
+            ammoBoxDiedEffect.gameObject.SetActive(true);
+            ammoBoxDiedEffect.Play();
             StartCoroutine(DestroyAfterEffect());
+            EventGame ammoReturned = new(Constant.returnAmmo, 0);
+            GameEvent.Raise(ammoReturned);
             other.gameObject.SetActive(false);
             Destroy(gameObject);
         }
@@ -28,12 +30,12 @@ public class AmmoBox : MonoBehaviour
     }
     private IEnumerator DestroyAfterEffect()
     {
-        float effectDuration = enemyDiedEffect.main.duration;
+        float effectDuration = ammoBoxDiedEffect.main.duration;
 
         yield return new WaitForSeconds(0.07f);
 
-        enemyDiedEffect.Stop();
-        enemyDiedEffect.gameObject.SetActive(false);
+        ammoBoxDiedEffect.Stop();
+        ammoBoxDiedEffect.gameObject.SetActive(false);
         Destroy(gameObject);
     }
 }

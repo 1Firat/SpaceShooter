@@ -24,5 +24,6 @@ MonoBehaviour:
   winScore: 1500
   score: 0
   maxAmmo: 100
-  currentAmmo: 7
+  startAmmo: 5
+  ammoBoxMaxAmmo: 20
   life: 3
