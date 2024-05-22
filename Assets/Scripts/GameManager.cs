@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool isFire = false;
     public bool menuStatus = false;
     public int score;
+    public ParticleSystem fireWork;
     public GameObject endGame;
     public GameObject dLight;
     public GameObject redLight;
@@ -52,15 +53,18 @@ public class GameManager : MonoBehaviour
         }
         if (gameOver != false)
         {
-            endGame.gameObject.SetActive(true);
-            dLight.gameObject.SetActive(false);
-            redLight.gameObject.SetActive(true);
+            endGame.SetActive(true);
+            dLight.SetActive(false);
+            redLight.SetActive(true);
         }
         if (winControl != false)
         {
-            endGame.gameObject.SetActive(true);
-            dLight.gameObject.SetActive(false);
-            greenLight.gameObject.SetActive(true);
+            fireWork.gameObject.SetActive(true);
+            fireWork.Play();
+            endGame.SetActive(true);
+            dLight.SetActive(false);
+            redLight.SetActive(false);
+            greenLight.SetActive(true);
         }
     }
     void EventListener(EventGame eg)

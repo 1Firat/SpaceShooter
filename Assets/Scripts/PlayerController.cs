@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem hitEffect;
     public ParticleSystem collectAmmoBoxEffect;
 
-    // Start is called before the first frame update
     void Start()
     {
         GameEvent.RegisterListener(EventListener);
@@ -24,8 +23,6 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -102,10 +99,16 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
+            PlayerHit();
             hitEffect.gameObject.SetActive(true);
             hitEffect.Play();
             StartCoroutine(DestroyAfterEffect("player_hit"));
         }
+    }
+    void PlayerHit()
+    {
+        EventGame playerGetHit = new(Constant.playerHit, 0);
+        GameEvent.Raise(playerGetHit);
     }
 
     IEnumerator FireRoutine()
@@ -124,7 +127,6 @@ public class PlayerController : MonoBehaviour
             float ammoBoxEffectDuration = collectAmmoBoxEffect.main.duration;
 
             yield return new WaitForSeconds(ammoBoxEffectDuration);
-            Debug.Log("ammobox effecti kapatildi");
             collectAmmoBoxEffect.Stop();
             collectAmmoBoxEffect.gameObject.SetActive(false);
         }
@@ -132,9 +134,7 @@ public class PlayerController : MonoBehaviour
         if (effectType == "player_hit")
         {
             float hitEffectDuration = hitEffect.main.duration;
-
             yield return new WaitForSeconds(hitEffectDuration);
-            Debug.Log("playerhit effecti kapatildi");
             hitEffect.Stop();
             hitEffect.gameObject.SetActive(false);
         }

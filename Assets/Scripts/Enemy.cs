@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            PlayerHit();
         }
 
         if (other.gameObject.CompareTag("Bullet"))
@@ -47,11 +46,7 @@ public class Enemy : MonoBehaviour
         GameEvent.Raise(enemyDie);
     }
 
-    void PlayerHit()
-    {
-        EventGame playerGetHit = new(Constant.playerHit, 0);
-        GameEvent.Raise(playerGetHit);
-    }
+
 
     void EnemyExploded()
     {
