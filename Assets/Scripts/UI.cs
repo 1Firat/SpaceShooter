@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting.FullSerializer;
 
 public class UI : MonoBehaviour
 {
@@ -75,7 +76,16 @@ public class UI : MonoBehaviour
     {
         if (eg.type == Constant.gameTimer)
         {
-            timerText.text = "Time: " + eg.value.ToString("0.##");
+            if (eg.value > 10)
+            {
+                timerText.text = "Time: " + eg.value.ToString("0");
+            }
+            if (eg.value <= 10)
+            {
+                timerText.text = "Time: " + eg.value.ToString("0.##");
+                timerText.color = Color.red;
+            }
+
         }
         if (eg.type == Constant.gameTimeIsUP)
         {

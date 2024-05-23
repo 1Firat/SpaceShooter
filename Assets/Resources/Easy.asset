@@ -17,8 +17,8 @@ MonoBehaviour:
   playerSpeed: 650
   bulletSpeed: 450
   enemySpawnCD: 2
-  ammoBoxSpawnTime: 5
-  time: 60
+  ammoBoxSpawnTime: 10
+  time: 15
   fireRate: 2
   m_Points: 0
   winScore: 1600
