@@ -5,6 +5,9 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public Vector3 rightTargetRotation = new Vector3(-62, 90, -180);
+    public Vector3 leftTargetRotation = new Vector3(-118, 90, -180);
+    public float speed = 2.0f;
     public bool gameOver;
     public bool isFire;
     private bool ammoMaxed;
@@ -35,6 +38,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rightTargetRotation), Time.deltaTime * speed);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(leftTargetRotation), Time.deltaTime * speed);
+
+        }
         Vector3 moveDirection = new Vector3(horizontalInput, 0f, 0f);
         if (horizontalInput == 0f)
         {

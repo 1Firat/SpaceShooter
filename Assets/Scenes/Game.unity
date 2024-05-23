@@ -145,11 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c8726659850d7349968ce16d5aef142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.01117744
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c8726659850d7349968ce16d5aef142, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 45
+      value: 45.00071
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c8726659850d7349968ce16d5aef142, type: 3}
       propertyPath: m_LocalPosition.z
@@ -177,11 +177,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c8726659850d7349968ce16d5aef142, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c8726659850d7349968ce16d5aef142, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
+      value: -180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -392,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4655301726307414325, guid: eebd4198cae929f4883e70594350f6af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 347
       objectReference: {fileID: 0}
     - target: {fileID: 4655301726307414325, guid: eebd4198cae929f4883e70594350f6af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8200,6 +8200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789c1e9757f3345eebfff857200b1d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightTargetRotation: {x: -62, y: 90, z: -180}
+  leftTargetRotation: {x: -118, y: 90, z: -180}
+  speed: 2
   gameOver: 0
   isFire: 0
   hitEffect: {fileID: 132002207}
