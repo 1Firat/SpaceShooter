@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
@@ -76,16 +78,20 @@ public class UI : MonoBehaviour
     {
         if (eg.type == Constant.gameTimer)
         {
-            if (eg.value > 10)
+            if (eg.value > 15)
             {
                 timerText.text = "Time: " + eg.value.ToString("0");
+            }
+            if (10 >= eg.value && eg.value <= 15)
+            {
+                timerText.text = "Time: " + eg.value.ToString("0");
+                timerText.color = Color.yellow;
             }
             if (eg.value <= 10)
             {
                 timerText.text = "Time: " + eg.value.ToString("0.##");
                 timerText.color = Color.red;
             }
-
         }
         if (eg.type == Constant.gameTimeIsUP)
         {
@@ -110,11 +116,12 @@ public class UI : MonoBehaviour
     }
     public void MainMenu()
     {
+
         SceneManager.LoadScene("Menu");
     }
     public void RestartGame()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Game");
     }
     public void Quit()
     {
