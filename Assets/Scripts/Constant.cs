@@ -18,6 +18,8 @@ public static class Constant
     public readonly static string returnAmmo = "ammo_returned";
     public readonly static string ammoMax = "ammo_max";
     public readonly static string ammoNotMax = "not_ammo_max";
+    public readonly static string pauseGame = "game_paused";
+    public readonly static string resumeGame = "game_resumed";
 
 
 

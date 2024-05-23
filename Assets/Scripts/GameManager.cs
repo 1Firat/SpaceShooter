@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool isFire = false;
     public bool ammoBoxControl = false;
     public bool menuStatus = false;
+    public bool pauseGameControl = false;
     public int score;
     private int maxAmmo;
     private int collectedAmmoBoxMaxAmmo;
@@ -41,8 +42,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        time -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EventGame gamePause = new(Constant.pauseGame, 0);
+            GameEvent.Raise(gamePause);
+            pauseGameControl = true;
+        }
+        if (pauseGameControl && Input.GetKeyDown(KeyCode.Escape))
+        {
+            EventGame gameResume = new(Constant.resumeGame, 0);
+            GameEvent.Raise(gameResume);
+            pauseGameControl = false;
+        }
+        // GAME TIME
 
+        time -= Time.deltaTime;
         EventGame gameTime = new(Constant.gameTimer, time);
         GameEvent.Raise(gameTime);
 
@@ -52,6 +66,9 @@ public class GameManager : MonoBehaviour
             EventGame timeIsUp = new(Constant.gameTimeIsUP, 0);
             GameEvent.Raise(timeIsUp);
         }
+
+        // END GAME
+
         if (gameOver && score >= DifficultySelect.selected.winScore)
         {
             winControl = true;
@@ -73,6 +90,8 @@ public class GameManager : MonoBehaviour
             redLight.SetActive(false);
             greenLight.SetActive(true);
         }
+
+        // AMMO BOX 
 
         if (ammoBoxControl)
         {
@@ -112,6 +131,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     void EventListener(EventGame eg)
     {
         if (eg.type == Constant.enemyExploded)
