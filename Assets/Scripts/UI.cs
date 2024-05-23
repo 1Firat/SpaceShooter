@@ -82,7 +82,7 @@ public class UI : MonoBehaviour
             {
                 timerText.text = "Time: " + eg.value.ToString("0");
             }
-            if (10 >= eg.value && eg.value <= 15)
+            if (eg.value >= 10 && eg.value <= 15)
             {
                 timerText.text = "Time: " + eg.value.ToString("0");
                 timerText.color = Color.yellow;
@@ -113,18 +113,5 @@ public class UI : MonoBehaviour
         {
             winControl = true;
         }
-    }
-    public void MainMenu()
-    {
-
-        SceneManager.LoadScene("Menu");
-    }
-    public void RestartGame()
-    {
-        SceneManager.LoadScene("Game");
-    }
-    public void Quit()
-    {
-        Application.Quit();
     }
 }
