@@ -8,22 +8,42 @@ public class SpawnManager : MonoBehaviour
     public GameObject ammoBox;
     public Transform enemySpawnPoint;
     private bool gameOver;
+    private bool gamePaused;
     private int spawnPos = 450;
     private float ammoBoxSpawnTime;
+    private float spawnCounter;
+    private float spawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
         GameEvent.RegisterListener(EventListener);
-
+        spawnTime = DifficultySelect.selected.enemySpawnCD;
         ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
         enemySpawnPoint = GameObject.FindWithTag("SpawnManager").transform;
-        StartCoroutine(SpawnEnemy());
+    }
+
+    private void spawnRoutine(float dt)
+    {
+        spawnCounter += dt;
+        if (spawnCounter >= spawnTime)
+        {
+            Spawn();
+            spawnCounter = 0;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gamePaused)
+        {
+            return;
+        }
+
+        float dt = Time.deltaTime;
+        spawnRoutine(dt);
+
         if (gameOver != false)
         {
             Destroy(gameObject);
@@ -70,7 +90,6 @@ public class SpawnManager : MonoBehaviour
                 Destroy(ammoBox);
             }
         }
-
     }
 
     void EventListener(EventGame eg)
@@ -79,21 +98,24 @@ public class SpawnManager : MonoBehaviour
         {
             gameOver = true;
         }
+        if (eg.type == Constant.pauseGame)
+        {
+            gamePaused = true;
+        }
+        if (eg.type == Constant.resumeGame)
+        {
+            gamePaused = false;
+        }
     }
 
-    IEnumerator SpawnEnemy()
+
+    private void Spawn()
     {
-        while (!gameOver)
-        {
-            GameObject randomSpawnEnemy = enemy[Random.Range(0, enemy.Length)];
-            Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 32f, 800);
+        GameObject randomSpawnEnemy = enemy[Random.Range(0, enemy.Length)];
+        Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 32f, 800);
 
-            GameObject o = Instantiate(randomSpawnEnemy, randomPos, enemySpawnPoint.rotation);
-            EnemyMovement script = o.GetComponent<EnemyMovement>();
-            script.enemySpeed = DifficultySelect.selected.enemySpeed;
-
-
-            yield return new WaitForSeconds(DifficultySelect.selected.enemySpawnCD);
-        }
+        GameObject o = Instantiate(randomSpawnEnemy, randomPos, enemySpawnPoint.rotation);
+        EnemyMovement script = o.GetComponent<EnemyMovement>();
+        script.enemySpeed = DifficultySelect.selected.enemySpeed;
     }
 }

@@ -12,12 +12,14 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreText2;
+    public TextMeshProUGUI pauseTimeText;
     public GameObject enableUI;
     public GameObject gameOverText;
     public GameObject winText;
     public GameObject menuButton;
     public GameObject restartGameButton;
     public GameObject disableUI;
+    public GameObject pauseObject;
 
     public GameObject heart1;
     public GameObject heart2;
@@ -31,7 +33,6 @@ public class UI : MonoBehaviour
     public bool winControl;
     void Start()
     {
-
         GameEvent.RegisterListener(EventListener);
     }
 
@@ -112,6 +113,24 @@ public class UI : MonoBehaviour
         if (eg.type == Constant.playerWin)
         {
             winControl = true;
+        }
+        if (eg.type == Constant.pauseGame)
+        {
+            pauseObject.SetActive(true);
+        }
+        if (eg.type == Constant.resumeGame)
+        {
+            pauseObject.SetActive(false);
+        }
+        if (eg.type == Constant.gamePauseTime)
+        {
+            pauseObject.SetActive(false);
+            pauseTimeText.gameObject.SetActive(true);
+            pauseTimeText.text = eg.value.ToString("0");
+            if (eg.value <= 0)
+            {
+                pauseTimeText.gameObject.SetActive(false);
+            }
         }
     }
 }

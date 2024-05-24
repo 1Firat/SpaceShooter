@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool gameOver;
     public bool isFire;
     private bool ammoMaxed;
+    private bool gamePaused;
     private int position = 550;
     public ParticleSystem hitEffect;
     public ParticleSystem collectAmmoBoxEffect;
@@ -32,9 +33,23 @@ public class PlayerController : MonoBehaviour
         {
             ammoMaxed = false;
         }
+        if (eg.type == Constant.pauseGame)
+        {
+            gamePaused = true;
+        }
+        if (eg.type == Constant.resumeGame)
+        {
+            gamePaused = false;
+        }
+
     }
     void Update()
     {
+        if (gamePaused)
+        {
+            return;
+        }
+
         float horizontalInput = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {

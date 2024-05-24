@@ -20,7 +20,7 @@ public static class Constant
     public readonly static string ammoNotMax = "not_ammo_max";
     public readonly static string pauseGame = "game_paused";
     public readonly static string resumeGame = "game_resumed";
-
-
+    public readonly static string gamePauseTime = "game_pause_time";
+    public readonly static string playGame = "play_game";
 
 }

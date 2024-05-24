@@ -6,6 +6,9 @@ using UnityEngine.Experimental.GlobalIllumination;
 public class GameManager : MonoBehaviour
 {
     private float time;
+    private float ammoBoxEffectTime;
+    private float ammoBoxEffectMaxTime = 5f;
+    private float pauseTime = 3.0f;
 
     public bool timeControl = false;
     public bool winControl = false;
@@ -13,15 +16,18 @@ public class GameManager : MonoBehaviour
     public bool isFire = false;
     public bool ammoBoxControl = false;
     public bool menuStatus = false;
-    public bool pauseGameControl = false;
+    public bool gamePaused;
+    public bool resumeGame;
+
     public int score;
     private int maxAmmo;
     private int collectedAmmoBoxMaxAmmo;
     private int currentAmmo;
-    private float ammoBoxEffectTime;
-    private float ammoBoxEffectMaxTime = 5f;
+
+
     public ParticleSystem ammoBoxDeBuffEffect;
     public ParticleSystem fireWork;
+
     public GameObject endGame;
     public GameObject dLight;
     public GameObject redLight;
@@ -29,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
+        Debug.Log("on enable calisti");
         score = 0;
     }
 
@@ -42,19 +49,31 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!gamePaused && Input.GetKeyDown(KeyCode.Escape))
         {
             EventGame gamePause = new(Constant.pauseGame, 0);
             GameEvent.Raise(gamePause);
-            pauseGameControl = true;
+            gamePaused = true;
         }
-        if (pauseGameControl && Input.GetKeyDown(KeyCode.Escape))
+        if (resumeGame)
         {
-            EventGame gameResume = new(Constant.resumeGame, 0);
-            GameEvent.Raise(gameResume);
-            pauseGameControl = false;
+            pauseTime -= Time.deltaTime;
+            EventGame pausedTime = new(Constant.gamePauseTime, pauseTime);
+            GameEvent.Raise(pausedTime);
+            if (pauseTime <= 0)
+            {
+                EventGame gameResume = new(Constant.resumeGame, 0);
+                GameEvent.Raise(gameResume);
+                pauseTime = 3.0f;
+                gamePaused = false;
+                resumeGame = false;
+            }
         }
         // GAME TIME
+        if (gamePaused)
+        {
+            return;
+        }
 
         time -= Time.deltaTime;
         EventGame gameTime = new(Constant.gameTimer, time);
@@ -166,6 +185,10 @@ public class GameManager : MonoBehaviour
         if (eg.type == Constant.ammoBoxCollected)
         {
             ammoBoxControl = true;
+        }
+        if (eg.type == Constant.playGame)
+        {
+            resumeGame = true;
         }
     }
 
