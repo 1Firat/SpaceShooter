@@ -13,14 +13,14 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreText2;
     public TextMeshProUGUI pauseTimeText;
-    public GameObject enableUI;
+
+    public GameObject endGameBackGround;
+    public GameObject endGameUI;
     public GameObject gameOverText;
     public GameObject winText;
-    public GameObject menuButton;
     public GameObject restartGameButton;
-    public GameObject disableUI;
+    public GameObject gameUI;
     public GameObject pauseObject;
-
     public GameObject heart1;
     public GameObject heart2;
     public GameObject heart3;
@@ -29,8 +29,10 @@ public class UI : MonoBehaviour
     public GameObject grayHeart3;
 
     public int heart = 3;
+
     public bool gameOver;
     public bool winControl;
+
     void Start()
     {
         GameEvent.RegisterListener(EventListener);
@@ -38,6 +40,8 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
+
+
         if (heart == 3)
         {
             heart1.gameObject.SetActive(true);
@@ -61,22 +65,25 @@ public class UI : MonoBehaviour
             GameEvent.Raise(playerDeath);
             gameOver = true;
         }
-        if (gameOver != false && winControl != true)
+        if (gameOver && !winControl)
         {
-            disableUI.gameObject.SetActive(false);
-            enableUI.gameObject.SetActive(true);
+            // gameUI.gameObject.SetActive(false);
+            endGameBackGround.SetActive(true);
+            endGameUI.gameObject.SetActive(true);
             gameOverText.SetActive(true);
         }
-        if (winControl != false && gameOver != false)
+        if (winControl && !gameOver)
         {
-            disableUI.gameObject.SetActive(false);
-            enableUI.gameObject.SetActive(true);
+            // gameUI.gameObject.SetActive(false);
+            endGameBackGround.SetActive(true);
+            endGameUI.gameObject.SetActive(true);
             winText.SetActive(true);
         }
     }
 
     void EventListener(EventGame eg)
     {
+
         if (eg.type == Constant.gameTimer)
         {
             if (eg.value > 15)
@@ -117,10 +124,6 @@ public class UI : MonoBehaviour
         if (eg.type == Constant.pauseGame)
         {
             pauseObject.SetActive(true);
-        }
-        if (eg.type == Constant.resumeGame)
-        {
-            pauseObject.SetActive(false);
         }
         if (eg.type == Constant.gamePauseTime)
         {

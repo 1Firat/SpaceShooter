@@ -22,5 +22,6 @@ public static class Constant
     public readonly static string resumeGame = "game_resumed";
     public readonly static string gamePauseTime = "game_pause_time";
     public readonly static string playGame = "play_game";
+    public readonly static string endGame = "end_game";
 
 }

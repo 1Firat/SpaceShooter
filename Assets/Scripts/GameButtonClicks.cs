@@ -11,6 +11,7 @@ public class GameButtonClicks : MonoBehaviour
     }
     public void RestartGame()
     {
+        GameEvent.Release();
         SceneManager.LoadScene("Game");
     }
     public void Quit()

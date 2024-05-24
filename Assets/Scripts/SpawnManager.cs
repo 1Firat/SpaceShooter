@@ -44,10 +44,10 @@ public class SpawnManager : MonoBehaviour
         float dt = Time.deltaTime;
         spawnRoutine(dt);
 
-        if (gameOver != false)
-        {
-            Destroy(gameObject);
-        }
+        // if (gameOver != false)
+        // {
+        //     Destroy(gameObject);
+        // }
 
         ammoBoxSpawnTime -= Time.deltaTime;
 
@@ -60,36 +60,36 @@ public class SpawnManager : MonoBehaviour
             ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
         }
 
-        if (gameOver != false)
-        {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            if (enemies == null)
-            {
-                return;
-            }
-            foreach (GameObject enemy in enemies)
-            {
-                Destroy(enemy);
-            }
-            GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
-            if (bullets == null)
-            {
-                return;
-            }
-            foreach (GameObject bullet in bullets)
-            {
-                bullet.SetActive(false);
-            }
-            GameObject[] ammoBoxs = GameObject.FindGameObjectsWithTag("AmmoBox");
-            if (ammoBoxs == null)
-            {
-                return;
-            }
-            foreach (GameObject ammoBox in ammoBoxs)
-            {
-                Destroy(ammoBox);
-            }
-        }
+        // if (gameOver)
+        // {
+        //     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //     if (enemies == null)
+        //     {
+        //         return;
+        //     }
+        //     foreach (GameObject enemy in enemies)
+        //     {
+        //         Destroy(enemy);
+        //     }
+        //     GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        //     if (bullets == null)
+        //     {
+        //         return;
+        //     }
+        //     foreach (GameObject bullet in bullets)
+        //     {
+        //         bullet.SetActive(false);
+        //     }
+        //     GameObject[] ammoBoxs = GameObject.FindGameObjectsWithTag("AmmoBox");
+        //     if (ammoBoxs == null)
+        //     {
+        //         return;
+        //     }
+        //     foreach (GameObject ammoBox in ammoBoxs)
+        //     {
+        //         Destroy(ammoBox);
+        //     }
+        // }
     }
 
     void EventListener(EventGame eg)

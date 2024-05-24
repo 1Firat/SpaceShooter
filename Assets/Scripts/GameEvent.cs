@@ -26,4 +26,9 @@ public static class GameEvent
     {
         listeners.Remove(listener);
     }
+
+    public static void Release()
+    {
+        listeners.Clear();
+    }
 }

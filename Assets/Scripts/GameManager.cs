@@ -28,14 +28,10 @@ public class GameManager : MonoBehaviour
     public ParticleSystem ammoBoxDeBuffEffect;
     public ParticleSystem fireWork;
 
-    public GameObject endGame;
-    public GameObject dLight;
-    public GameObject redLight;
-    public GameObject greenLight;
+
 
     void OnEnable()
     {
-        Debug.Log("on enable calisti");
         score = 0;
     }
 
@@ -60,7 +56,7 @@ public class GameManager : MonoBehaviour
             pauseTime -= Time.deltaTime;
             EventGame pausedTime = new(Constant.gamePauseTime, pauseTime);
             GameEvent.Raise(pausedTime);
-            if (pauseTime <= 0)
+            if (pauseTime <= 1)
             {
                 EventGame gameResume = new(Constant.resumeGame, 0);
                 GameEvent.Raise(gameResume);
@@ -74,10 +70,13 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        if (!gameOver)
+        {
+            time -= Time.deltaTime;
+            EventGame gameTime = new(Constant.gameTimer, time);
+            GameEvent.Raise(gameTime);
+        }
 
-        time -= Time.deltaTime;
-        EventGame gameTime = new(Constant.gameTimer, time);
-        GameEvent.Raise(gameTime);
 
         if (time <= 0)
         {
@@ -96,18 +95,13 @@ public class GameManager : MonoBehaviour
         }
         if (gameOver)
         {
-            endGame.SetActive(true);
-            dLight.SetActive(false);
-            redLight.SetActive(true);
+            EventGame gameOver = new(Constant.endGame, 0);
+            GameEvent.Raise(gameOver);
         }
         if (winControl)
         {
             fireWork.gameObject.SetActive(true);
             fireWork.Play();
-            endGame.SetActive(true);
-            dLight.SetActive(false);
-            redLight.SetActive(false);
-            greenLight.SetActive(true);
         }
 
         // AMMO BOX 
@@ -153,6 +147,10 @@ public class GameManager : MonoBehaviour
 
     void EventListener(EventGame eg)
     {
+        if (gameOver)
+        {
+            return;
+        }
         if (eg.type == Constant.enemyExploded)
         {
             score += 100;

@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        if (gameOver)
+        {
+            return;
+        }
 
         float horizontalInput = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
