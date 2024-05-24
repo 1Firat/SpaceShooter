@@ -8,15 +8,6 @@ public class Enemy : MonoBehaviour
 {
     public ParticleSystem enemyDiedEffect;
 
-    private void Start()
-    {
-
-    }
-    private void Update()
-    {
-
-    }
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("DestroyEnemy"))

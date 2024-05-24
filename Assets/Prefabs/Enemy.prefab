@@ -9946,6 +9946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 0
+  gamePause: 0
 --- !u!114 &3287714987103820428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9959,7 +9960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDiedEffect: {fileID: 4596544553357837919}
-  playerHitEffect: {fileID: 7706442703574393288, guid: f88662f8fd0e54daf88a54063d108e53, type: 3}
 --- !u!1 &5669424765666512365
 GameObject:
   m_ObjectHideFlags: 0

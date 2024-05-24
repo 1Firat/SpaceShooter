@@ -100,6 +100,10 @@ public class UI : MonoBehaviour
                 timerText.text = "Time: " + eg.value.ToString("0.##");
                 timerText.color = Color.red;
             }
+            if (eg.value <= 0)
+            {
+                timerText.text = "Time: 0";
+            }
         }
         if (eg.type == Constant.gameTimeIsUP)
         {
@@ -112,7 +116,7 @@ public class UI : MonoBehaviour
             scoreText2.text = "Your " + scoreText.text;
         }
 
-        if (eg.type == Constant.playerHit)
+        if (eg.type == Constant.decreaseHeart)
         {
             heart -= 1;
         }

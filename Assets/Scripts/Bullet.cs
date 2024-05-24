@@ -6,6 +6,12 @@ public class Bullet : MonoBehaviour
 {
     public GameObject bullet;
     private float speed;
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void GO(float speed)
     {
@@ -30,6 +36,10 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("AmmoBox"))
         {
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            audioSource.Play();
         }
 
     }

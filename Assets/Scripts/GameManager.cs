@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!gamePaused && Input.GetKeyDown(KeyCode.Escape))
+        if (!gameOver && !gamePaused && Input.GetKeyDown(KeyCode.Escape))
         {
             EventGame gamePause = new(Constant.pauseGame, 0);
             GameEvent.Raise(gamePause);
@@ -150,6 +150,11 @@ public class GameManager : MonoBehaviour
         if (gameOver)
         {
             return;
+        }
+        if (eg.type == Constant.playerHit)
+        {
+            EventGame decreaseHeart = new(Constant.decreaseHeart, 0);
+            GameEvent.Raise(decreaseHeart);
         }
         if (eg.type == Constant.enemyExploded)
         {

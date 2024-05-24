@@ -13,9 +13,11 @@ public class PlayerController : MonoBehaviour
     private int position = 550;
     public ParticleSystem hitEffect;
     public ParticleSystem collectAmmoBoxEffect;
+    private AudioSource[] audioSources;
 
     void Start()
     {
+        audioSources = GetComponents<AudioSource>();
         GameEvent.RegisterListener(EventListener);
     }
 
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
         }
         if (gameOver)
         {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-90, 90, -180), Time.deltaTime * 5);
             return;
         }
 
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             if (ammoMaxed)
             {
+                audioSources[1].Play();
                 return;
             }
             StartFire();
@@ -113,6 +117,7 @@ public class PlayerController : MonoBehaviour
             bullet.transform.position = transform.position;
             var script = bullet.GetComponent<Bullet>();
             script.GO(DifficultySelect.selected.bulletSpeed);
+            audioSources[0].Play();
             bullet.SetActive(true);
         }
     }
