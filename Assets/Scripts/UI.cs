@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class UI : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class UI : MonoBehaviour
     public GameObject grayHeart3;
 
     public int heart = 3;
+    public float score;
     public float scoreViewCurrentTime;
     public float scoreViewMaxTime = 0.2f;
 
@@ -37,7 +39,12 @@ public class UI : MonoBehaviour
     public bool winControl;
     public bool decrease;
     public bool plus;
+    public bool changeScore;
 
+    void OnEnable()
+    {
+        score = 0;
+    }
     void Start()
     {
         GameEvent.RegisterListener(EventListener);
@@ -64,48 +71,32 @@ public class UI : MonoBehaviour
         {
             heart3.gameObject.SetActive(false);
 
-            EventGame playerDeath = new(Constant.playerDeath, 0);
+            EventGame playerDeath = new(Constant.playerDeath, 0, 0);
             GameEvent.Raise(playerDeath);
             gameOver = true;
         }
         if (gameOver && !winControl)
         {
-            // gameUI.gameObject.SetActive(false);
             endGameBackGround.SetActive(true);
             endGameUI.gameObject.SetActive(true);
             gameOverText.SetActive(true);
         }
         if (winControl && gameOver)
         {
-            // gameUI.gameObject.SetActive(false);
             endGameBackGround.SetActive(true);
             endGameUI.gameObject.SetActive(true);
             winText.SetActive(true);
         }
-        if (plus)
+        if (changeScore)
         {
-            scoreViewText.gameObject.SetActive(true);
-            scoreViewText.color = Color.green;
-            scoreViewText.text = "+100";
             scoreViewCurrentTime += Time.deltaTime;
             if (scoreViewCurrentTime >= scoreViewMaxTime)
             {
-                scoreViewText.gameObject.SetActive(false);
+                scoreText.color = Color.white;
+                scoreText.text = "Score: " + score;
+                scoreText2.text = "Your " + scoreText.text;
                 scoreViewCurrentTime = 0;
-                plus = false;
-            }
-        }
-        if (decrease)
-        {
-            scoreViewText.gameObject.SetActive(true);
-            scoreViewText.color = Color.red;
-            scoreViewText.text = "-200";
-            scoreViewCurrentTime += Time.deltaTime;
-            if (scoreViewCurrentTime >= scoreViewMaxTime)
-            {
-                scoreViewText.gameObject.SetActive(false);
-                scoreViewCurrentTime = 0;
-                decrease = false;
+                changeScore = false;
             }
         }
     }
@@ -140,8 +131,18 @@ public class UI : MonoBehaviour
         }
         if (eg.type == Constant.changeScore)
         {
-            scoreText.text = "Score: " + eg.value;
-            scoreText2.text = "Your " + scoreText.text;
+            score = eg.value;
+            if (eg.value2 == 100)
+            {
+                scoreText.color = Color.green;
+                scoreText.text = "Score: +100";
+            }
+            if (eg.value2 == -200)
+            {
+                scoreText.color = Color.red;
+                scoreText.text = "Score: -200";
+            }
+            changeScore = true;
         }
         if (eg.type == Constant.decreaseHeart)
         {

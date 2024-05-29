@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
         GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
         if (bullet != null)
         {
-            EventGame ammoUsed = new(Constant.useAmmo, 0);
+            EventGame ammoUsed = new(Constant.useAmmo, 0, 0);
             GameEvent.Raise(ammoUsed);
             bullet.transform.position = transform.position;
             var script = bullet.GetComponent<Bullet>();
@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
             collectAmmoBoxEffect.gameObject.SetActive(true);
             collectAmmoBoxEffect.Play();
             StartCoroutine(DestroyAfterEffect("ammo_box"));
-            EventGame ammoBox = new(Constant.ammoBoxCollected, 0);
+            EventGame ammoBox = new(Constant.ammoBoxCollected, 0, 0);
             GameEvent.Raise(ammoBox);
         }
         if (other.gameObject.CompareTag("Enemy"))
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
     }
     void PlayerHit()
     {
-        EventGame playerGetHit = new(Constant.playerHit, 0);
+        EventGame playerGetHit = new(Constant.playerHit, 0, 0);
         GameEvent.Raise(playerGetHit);
     }
 

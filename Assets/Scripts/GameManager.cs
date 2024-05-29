@@ -47,18 +47,18 @@ public class GameManager : MonoBehaviour
     {
         if (!gameOver && !gamePaused && Input.GetKeyDown(KeyCode.Escape))
         {
-            EventGame gamePause = new(Constant.pauseGame, 0);
+            EventGame gamePause = new(Constant.pauseGame, 0, 0);
             GameEvent.Raise(gamePause);
             gamePaused = true;
         }
         if (resumeGame)
         {
             pauseTime -= Time.deltaTime;
-            EventGame pausedTime = new(Constant.gamePauseTime, pauseTime);
+            EventGame pausedTime = new(Constant.gamePauseTime, pauseTime, 0);
             GameEvent.Raise(pausedTime);
             if (pauseTime <= 1)
             {
-                EventGame gameResume = new(Constant.resumeGame, 0);
+                EventGame gameResume = new(Constant.resumeGame, 0, 0);
                 GameEvent.Raise(gameResume);
                 pauseTime = 3.0f;
                 gamePaused = false;
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         if (!gameOver)
         {
             time -= Time.deltaTime;
-            EventGame gameTime = new(Constant.gameTimer, time);
+            EventGame gameTime = new(Constant.gameTimer, time, 0);
             GameEvent.Raise(gameTime);
         }
 
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         if (time <= 0)
         {
             gameOver = true;
-            EventGame timeIsUp = new(Constant.gameTimeIsUP, 0);
+            EventGame timeIsUp = new(Constant.gameTimeIsUP, 0, 0);
             GameEvent.Raise(timeIsUp);
         }
 
@@ -90,12 +90,12 @@ public class GameManager : MonoBehaviour
         if (gameOver && score >= DifficultySelect.selected.winScore)
         {
             winControl = true;
-            EventGame gameStatus = new(Constant.playerWin, 0);
+            EventGame gameStatus = new(Constant.playerWin, 0, 0);
             GameEvent.Raise(gameStatus);
         }
         if (gameOver)
         {
-            EventGame gameOver = new(Constant.endGame, 0);
+            EventGame gameOver = new(Constant.endGame, 0, 0);
             GameEvent.Raise(gameOver);
         }
         if (winControl)
@@ -111,18 +111,18 @@ public class GameManager : MonoBehaviour
             ammoBoxEffectTime += Time.deltaTime;
             if (currentAmmo >= collectedAmmoBoxMaxAmmo)
             {
-                EventGame ammoMaxed = new(Constant.ammoMax, 0);
+                EventGame ammoMaxed = new(Constant.ammoMax, 0, 0);
                 GameEvent.Raise(ammoMaxed);
             }
             if (currentAmmo <= collectedAmmoBoxMaxAmmo)
             {
-                EventGame ammoNotMaxed = new(Constant.ammoNotMax, 0);
+                EventGame ammoNotMaxed = new(Constant.ammoNotMax, 0, 0);
                 GameEvent.Raise(ammoNotMaxed);
             }
         }
         if (ammoBoxEffectTime >= ammoBoxEffectMaxTime)
         {
-            EventGame ammoBoxDecrease = new(Constant.ammoBoxDecreased, 0);
+            EventGame ammoBoxDecrease = new(Constant.ammoBoxDecreased, 0, 0);
             GameEvent.Raise(ammoBoxDecrease);
             ammoBoxDeBuffEffect.gameObject.SetActive(true);
             ammoBoxDeBuffEffect.Play();
@@ -136,12 +136,12 @@ public class GameManager : MonoBehaviour
             if (currentAmmo >= maxAmmo)
             {
 
-                EventGame ammoMaxed = new(Constant.ammoMax, 0);
+                EventGame ammoMaxed = new(Constant.ammoMax, 0, 0);
                 GameEvent.Raise(ammoMaxed);
             }
             if (currentAmmo <= maxAmmo)
             {
-                EventGame ammoNotMaxed = new(Constant.ammoNotMax, 0);
+                EventGame ammoNotMaxed = new(Constant.ammoNotMax, 0, 0);
                 GameEvent.Raise(ammoNotMaxed);
             }
         }
@@ -155,28 +155,24 @@ public class GameManager : MonoBehaviour
         }
         if (eg.type == Constant.playerHit)
         {
-            EventGame decreaseHeart = new(Constant.decreaseHeart, 0);
+            EventGame decreaseHeart = new(Constant.decreaseHeart, 0, 0);
             GameEvent.Raise(decreaseHeart);
         }
         if (eg.type == Constant.enemyExploded)
         {
             score += 100;
-            EventGame gameScore = new(Constant.changeScore, score);
+            EventGame gameScore = new(Constant.changeScore, score, 100);
             GameEvent.Raise(gameScore);
-            EventGame plusScore = new(Constant.plusScore, 0);
-            GameEvent.Raise(plusScore);
         }
         if (eg.type == Constant.enemyDied)
         {
             score -= 200;
-            EventGame gameScore = new(Constant.changeScore, score);
+            EventGame gameScore = new(Constant.changeScore, score, -200);
             GameEvent.Raise(gameScore);
-            EventGame decreaseScore = new(Constant.decreaseScore, 0);
-            GameEvent.Raise(decreaseScore);
         }
         if (eg.type == Constant.ammoBoxCollected)
         {
-            EventGame ammoBoxCollected = new(Constant.collectedAmmoBox, 0);
+            EventGame ammoBoxCollected = new(Constant.collectedAmmoBox, 0, 0);
             GameEvent.Raise(ammoBoxCollected);
         }
         if (eg.type == Constant.playerDeath)

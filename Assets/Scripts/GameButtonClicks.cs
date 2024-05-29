@@ -24,7 +24,7 @@ public class GameButtonClicks : MonoBehaviour
     }
     public void ResumeGame()
     {
-        EventGame resumed = new(Constant.playGame, 0);
+        EventGame resumed = new(Constant.playGame, 0, 0);
         GameEvent.Raise(resumed);
     }
 }

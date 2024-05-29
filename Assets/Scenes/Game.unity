@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4655301726307414325, guid: eebd4198cae929f4883e70594350f6af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 347
+      value: 464
       objectReference: {fileID: 0}
     - target: {fileID: 4655301726307414325, guid: eebd4198cae929f4883e70594350f6af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10329,12 +10329,14 @@ MonoBehaviour:
   grayHeart2: {fileID: 1639901367}
   grayHeart3: {fileID: 907316084}
   heart: 3
+  score: 0
   scoreViewCurrentTime: 0
   scoreViewMaxTime: 1
   gameOver: 0
   winControl: 0
   decrease: 0
   plus: 0
+  changeScore: 0
 --- !u!4 &2093454407
 Transform:
   m_ObjectHideFlags: 0

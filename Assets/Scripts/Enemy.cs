@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
             enemyDiedEffect.gameObject.SetActive(true);
             enemyDiedEffect.Play();
             StartCoroutine(DestroyAfterEffect());
-            EventGame ammoReturned = new(Constant.returnAmmo, 0);
+            EventGame ammoReturned = new(Constant.returnAmmo, 0, 0);
             GameEvent.Raise(ammoReturned);
             other.gameObject.SetActive(false);
             EnemyExploded();
@@ -35,13 +35,13 @@ public class Enemy : MonoBehaviour
 
     void EnemyDied()
     {
-        EventGame enemyDie = new(Constant.enemyDied, 0);
+        EventGame enemyDie = new(Constant.enemyDied, 0, 0);
         GameEvent.Raise(enemyDie);
     }
 
     void EnemyExploded()
     {
-        EventGame enemyExplode = new(Constant.enemyExploded, 0);
+        EventGame enemyExplode = new(Constant.enemyExploded, 0, 0);
         GameEvent.Raise(enemyExplode);
     }
 
