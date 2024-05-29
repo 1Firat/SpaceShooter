@@ -134,7 +134,7 @@ public class UI : MonoBehaviour
             pauseObject.SetActive(false);
             pauseTimeText.gameObject.SetActive(true);
             pauseTimeText.text = eg.value.ToString("0");
-            if (eg.value <= 0)
+            if (eg.value <= 1)
             {
                 pauseTimeText.gameObject.SetActive(false);
             }
