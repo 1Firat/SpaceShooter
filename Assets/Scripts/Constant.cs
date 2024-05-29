@@ -5,6 +5,7 @@ using UnityEngine;
 public static class Constant
 {
     public readonly static string ammoBoxCollected = "ammo_box_collected";
+    public readonly static string ammoBoxDecreased = "ammo_box_decreased";
     public readonly static string enemyDied = "enemy_died";
     public readonly static string playerHit = "player_hit";
     public readonly static string enemyExploded = "enemy_exploded";
@@ -24,5 +25,5 @@ public static class Constant
     public readonly static string playGame = "play_game";
     public readonly static string endGame = "end_game";
     public readonly static string decreaseHeart = "decrease_heart";
-
+    public readonly static string buttonClick = "button_clicked";
 }

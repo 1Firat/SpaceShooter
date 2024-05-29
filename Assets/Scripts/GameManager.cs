@@ -122,6 +122,8 @@ public class GameManager : MonoBehaviour
         }
         if (ammoBoxEffectTime >= ammoBoxEffectMaxTime)
         {
+            EventGame ammoBoxDecrease = new(Constant.ammoBoxDecreased, 0);
+            GameEvent.Raise(ammoBoxDecrease);
             ammoBoxDeBuffEffect.gameObject.SetActive(true);
             ammoBoxDeBuffEffect.Play();
             StartCoroutine(DestroyAfterEffect());

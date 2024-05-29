@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public static class DifficultySelect 
+public static class DifficultySelect
 {
     public static Difficulty selected;
 

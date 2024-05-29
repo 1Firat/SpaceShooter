@@ -109,6 +109,10 @@ public class PlayerController : MonoBehaviour
 
     public void FireBullet()
     {
+        if (gameOver)
+        {
+            return;
+        }
         GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
         if (bullet != null)
         {
@@ -133,10 +137,9 @@ public class PlayerController : MonoBehaviour
 
     void StopFire()
     {
-        if (!gameOver)
-        {
-            isFire = false;
-        }
+
+        isFire = false;
+
     }
 
     private void OnTriggerEnter(Collider other)
