@@ -72,7 +72,7 @@ public class UI : MonoBehaviour
             endGameUI.gameObject.SetActive(true);
             gameOverText.SetActive(true);
         }
-        if (winControl && !gameOver)
+        if (winControl && gameOver)
         {
             // gameUI.gameObject.SetActive(false);
             endGameBackGround.SetActive(true);
