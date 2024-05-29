@@ -163,12 +163,16 @@ public class GameManager : MonoBehaviour
             score += 100;
             EventGame gameScore = new(Constant.changeScore, score);
             GameEvent.Raise(gameScore);
+            EventGame plusScore = new(Constant.plusScore, 0);
+            GameEvent.Raise(plusScore);
         }
         if (eg.type == Constant.enemyDied)
         {
             score -= 200;
             EventGame gameScore = new(Constant.changeScore, score);
             GameEvent.Raise(gameScore);
+            EventGame decreaseScore = new(Constant.decreaseScore, 0);
+            GameEvent.Raise(decreaseScore);
         }
         if (eg.type == Constant.ammoBoxCollected)
         {

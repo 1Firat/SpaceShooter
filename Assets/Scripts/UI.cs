@@ -13,6 +13,7 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreText2;
     public TextMeshProUGUI pauseTimeText;
+    public TextMeshProUGUI scoreViewText;
 
     public GameObject endGameBackGround;
     public GameObject endGameUI;
@@ -29,9 +30,13 @@ public class UI : MonoBehaviour
     public GameObject grayHeart3;
 
     public int heart = 3;
+    public float scoreViewCurrentTime;
+    public float scoreViewMaxTime = 0.2f;
 
     public bool gameOver;
     public bool winControl;
+    public bool decrease;
+    public bool plus;
 
     void Start()
     {
@@ -40,8 +45,6 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
-
-
         if (heart == 3)
         {
             heart1.gameObject.SetActive(true);
@@ -79,6 +82,32 @@ public class UI : MonoBehaviour
             endGameUI.gameObject.SetActive(true);
             winText.SetActive(true);
         }
+        if (plus)
+        {
+            scoreViewText.gameObject.SetActive(true);
+            scoreViewText.color = Color.green;
+            scoreViewText.text = "+100";
+            scoreViewCurrentTime += Time.deltaTime;
+            if (scoreViewCurrentTime >= scoreViewMaxTime)
+            {
+                scoreViewText.gameObject.SetActive(false);
+                scoreViewCurrentTime = 0;
+                plus = false;
+            }
+        }
+        if (decrease)
+        {
+            scoreViewText.gameObject.SetActive(true);
+            scoreViewText.color = Color.red;
+            scoreViewText.text = "-200";
+            scoreViewCurrentTime += Time.deltaTime;
+            if (scoreViewCurrentTime >= scoreViewMaxTime)
+            {
+                scoreViewText.gameObject.SetActive(false);
+                scoreViewCurrentTime = 0;
+                decrease = false;
+            }
+        }
     }
 
     void EventListener(EventGame eg)
@@ -109,18 +138,15 @@ public class UI : MonoBehaviour
         {
             gameOver = true;
         }
-
         if (eg.type == Constant.changeScore)
         {
             scoreText.text = "Score: " + eg.value;
             scoreText2.text = "Your " + scoreText.text;
         }
-
         if (eg.type == Constant.decreaseHeart)
         {
             heart -= 1;
         }
-
         if (eg.type == Constant.playerWin)
         {
             winControl = true;
@@ -138,6 +164,14 @@ public class UI : MonoBehaviour
             {
                 pauseTimeText.gameObject.SetActive(false);
             }
+        }
+        if (eg.type == Constant.plusScore)
+        {
+            plus = true;
+        }
+        if (eg.type == Constant.decreaseScore)
+        {
+            decrease = true;
         }
     }
 }

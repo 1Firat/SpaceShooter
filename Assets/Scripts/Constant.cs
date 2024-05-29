@@ -26,4 +26,6 @@ public static class Constant
     public readonly static string endGame = "end_game";
     public readonly static string decreaseHeart = "decrease_heart";
     public readonly static string buttonClick = "button_clicked";
+    public readonly static string decreaseScore = "decrease_score";
+    public readonly static string plusScore = "plus_score";
 }
