@@ -14,21 +14,15 @@ public class CustomDataEditor : Editor
     {
         Difficulty data = (Difficulty)target;
 
-        // Start recording changes for undo functionality
-        //Undo.RecordObject(data, "Modified Difficulty Values");
-
-        // Display and edit sliders
         data.enemySpeed = EditorGUILayout.Slider("Enemy Speed", data.enemySpeed, 0f, 2000f);
         data.playerSpeed = EditorGUILayout.Slider("Player Speed", data.playerSpeed, 0f, 2000f);
         data.bulletSpeed = EditorGUILayout.Slider("Bullet Speed", data.bulletSpeed, 0f, 2000f);
 
-        // Mark the object as dirty to ensure changes are saved
         if (GUI.changed)
         {
             EditorUtility.SetDirty(data);
         }
 
-        // Draw the default inspector below the sliders
         DrawDefaultInspector();
     }
 }
