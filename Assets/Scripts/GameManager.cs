@@ -75,6 +75,10 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
             EventGame gameTime = new(Constant.gameTimer, time, 0);
             GameEvent.Raise(gameTime);
+            if (time <= 0)
+            {
+                timeControl = true;
+            }
         }
 
 
@@ -87,7 +91,7 @@ public class GameManager : MonoBehaviour
 
         // END GAME
 
-        if (gameOver && score >= DifficultySelect.selected.winScore)
+        if (gameOver && score >= DifficultySelect.selected.winScore && timeControl)
         {
             winControl = true;
             EventGame gameStatus = new(Constant.playerWin, 0, 0);
