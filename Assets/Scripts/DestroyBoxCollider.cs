@@ -7,10 +7,19 @@ public class DestroyBoxCollider : MonoBehaviour
 {
     private BoxCollider boxCollider;
     private bool gameOver;
+
+    void OnEnable()
+    {
+        GameEvent.RegisterListener(EventListener);
+    }
+
+    void OnDisable()
+    {
+        GameEvent.UnregisterListener(EventListener);
+    }
     void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
-        GameEvent.RegisterListener(EventListener);
     }
     void Update()
     {

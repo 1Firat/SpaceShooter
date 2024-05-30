@@ -15,10 +15,18 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem collectAmmoBoxEffect;
     private AudioSource[] audioSources;
 
+    void OnEnable()
+    {
+        GameEvent.RegisterListener(EventListener);
+    }
+
+    void OnDisable()
+    {
+        GameEvent.UnregisterListener(EventListener);
+    }
     void Start()
     {
         audioSources = GetComponents<AudioSource>();
-        GameEvent.RegisterListener(EventListener);
     }
 
     void EventListener(EventGame eg)

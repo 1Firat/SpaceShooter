@@ -14,10 +14,17 @@ public class SpawnManager : MonoBehaviour
     private float spawnCounter;
     private float spawnTime;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         GameEvent.RegisterListener(EventListener);
+    }
+
+    void OnDisable()
+    {
+        GameEvent.UnregisterListener(EventListener);
+    }
+    void Start()
+    {
         spawnTime = DifficultySelect.selected.enemySpawnCD;
         ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
         enemySpawnPoint = GameObject.FindWithTag("SpawnManager").transform;

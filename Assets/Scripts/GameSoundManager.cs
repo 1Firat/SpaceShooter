@@ -8,7 +8,17 @@ public class GameSoundManager : MonoBehaviour
     void Start()
     {
         audioSources = GetComponents<AudioSource>();
+
+    }
+
+    void OnEnable()
+    {
         GameEvent.RegisterListener(EventListener);
+    }
+
+    void OnDisable()
+    {
+        GameEvent.UnregisterListener(EventListener);
     }
 
     void EventListener(EventGame eg)

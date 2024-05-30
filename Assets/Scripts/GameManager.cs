@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
     void OnEnable()
     {
         score = 0;
+        GameEvent.RegisterListener(EventListener);
+    }
+
+    void OnDisable()
+    {
+        GameEvent.UnregisterListener(EventListener);
     }
 
     void Start()
@@ -40,7 +46,6 @@ public class GameManager : MonoBehaviour
         maxAmmo = DifficultySelect.selected.startAmmo;
         collectedAmmoBoxMaxAmmo = DifficultySelect.selected.ammoBoxMaxAmmo;
         time = DifficultySelect.selected.time;
-        GameEvent.RegisterListener(EventListener);
     }
 
     private void Update()

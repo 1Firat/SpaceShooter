@@ -7,10 +7,16 @@ public class EnemyMovement : MonoBehaviour
     public float enemySpeed;
     public bool gamePause;
 
-    void Start()
+    void OnEnable()
     {
         GameEvent.RegisterListener(EventListener);
     }
+
+    void OnDisable()
+    {
+        GameEvent.UnregisterListener(EventListener);
+    }
+
     void Update()
     {
         if (gamePause)

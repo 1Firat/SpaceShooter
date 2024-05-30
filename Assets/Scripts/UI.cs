@@ -44,10 +44,12 @@ public class UI : MonoBehaviour
     void OnEnable()
     {
         score = 0;
-    }
-    void Start()
-    {
         GameEvent.RegisterListener(EventListener);
+    }
+
+    void OnDisable()
+    {
+        GameEvent.UnregisterListener(EventListener);
     }
 
     private void Update()
