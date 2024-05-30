@@ -9,17 +9,17 @@ public class DifficultyScript : MonoBehaviour
 
     public void Easy()
     {
-        Difficulty easyDifficulty = difficulties.Find(difficulty => difficulty.difficultyType == "easy");
+        Difficulty easyDifficulty = difficulties.Find(difficulty => difficulty.difficultyType == DifficultyType.Easy);
         DifficultySelect.Medium(easyDifficulty);
     }
     public void Medium()
     {
-        Difficulty mediumDifficulty = difficulties.Find(difficulty => difficulty.difficultyType == "medium");
+        Difficulty mediumDifficulty = difficulties.Find(difficulty => difficulty.difficultyType == DifficultyType.Medium);
         DifficultySelect.Medium(mediumDifficulty);
     }
     public void Hard()
     {
-        Difficulty hardDifficulty = difficulties.Find(difficulty => difficulty.difficultyType == "hard");
+        Difficulty hardDifficulty = difficulties.Find(difficulty => difficulty.difficultyType == DifficultyType.Hard);
         DifficultySelect.Medium(hardDifficulty);
     }
 }

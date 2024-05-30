@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b2ed42acee64d5c90041d80f60cc3f, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
-  difficultyType: medium
-  enemySpeed: 400
-  playerSpeed: 550
+  difficultyType: 1
+  enemySpeed: 350
+  playerSpeed: 750
   bulletSpeed: 450
   enemySpawnCD: 1.5
   ammoBoxSpawnTime: 15
