@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class GameSoundManager : MonoBehaviour
 {
-    private AudioSource[] audioSources;
+    private AudioSource audioSource;
+    public AudioClip enemyExplode;
+    public AudioClip playerHit;
+    public AudioClip ammoBoxCollected;
+    public AudioClip ammoBoxDecreased;
+
+
     void Start()
     {
-        audioSources = GetComponents<AudioSource>();
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -25,19 +30,23 @@ public class GameSoundManager : MonoBehaviour
     {
         if (eg.type == Constant.enemyExploded)
         {
-            audioSources[0].Play();
+            audioSource.clip = enemyExplode;
+            audioSource.Play();
         }
         if (eg.type == Constant.playerHit)
         {
-            audioSources[1].Play();
+            audioSource.clip = playerHit;
+            audioSource.Play();
         }
         if (eg.type == Constant.ammoBoxCollected)
         {
-            audioSources[2].Play();
+            audioSource.clip = ammoBoxCollected;
+            audioSource.Play();
         }
         if (eg.type == Constant.ammoBoxDecreased)
         {
-            audioSources[3].Play();
+            audioSource.clip = ammoBoxDecreased;
+            audioSource.Play();
         }
     }
 }
