@@ -12,12 +12,15 @@ public class UI : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI scoreText2;
+    public TextMeshProUGUI gameEndScoreText;
     public TextMeshProUGUI pauseTimeText;
     public TextMeshProUGUI scoreViewText;
 
+    public GameObject playIcon;
     public GameObject endGameBackGround;
-    public GameObject endGameUI;
+    public GameObject endGameWinMainMenuButton;
+    public GameObject endGameLoseMainMenuButton;
+    public GameObject endGameLoseTryAgainButton;
     public GameObject gameOverText;
     public GameObject winText;
     public GameObject restartGameButton;
@@ -80,13 +83,16 @@ public class UI : MonoBehaviour
         if (gameOver && !winControl)
         {
             endGameBackGround.SetActive(true);
-            endGameUI.gameObject.SetActive(true);
+            endGameLoseMainMenuButton.SetActive(true);
+            endGameLoseTryAgainButton.SetActive(true);
+            gameEndScoreText.gameObject.SetActive(true);
             gameOverText.SetActive(true);
         }
         if (winControl && gameOver)
         {
             endGameBackGround.SetActive(true);
-            endGameUI.gameObject.SetActive(true);
+            endGameWinMainMenuButton.SetActive(true);
+            gameEndScoreText.gameObject.SetActive(true);
             winText.SetActive(true);
         }
         if (changeScore)
@@ -96,7 +102,7 @@ public class UI : MonoBehaviour
             {
                 scoreText.color = Color.white;
                 scoreText.text = "Score: " + score;
-                scoreText2.text = "Your " + scoreText.text;
+                gameEndScoreText.text = "Your " + scoreText.text;
                 scoreViewCurrentTime = 0;
                 changeScore = false;
             }
@@ -160,12 +166,19 @@ public class UI : MonoBehaviour
         }
         if (eg.type == Constant.gamePauseTime)
         {
+            playIcon.SetActive(true);
             pauseObject.SetActive(false);
+            pauseTimeText.color = Color.white;
             pauseTimeText.gameObject.SetActive(true);
             pauseTimeText.text = eg.value.ToString("0");
+            if (eg.value < 1.5f)
+            {
+                pauseTimeText.color = Color.red;
+            }
             if (eg.value <= 1)
             {
                 pauseTimeText.gameObject.SetActive(false);
+                playIcon.SetActive(false);
             }
         }
         if (eg.type == Constant.plusScore)
