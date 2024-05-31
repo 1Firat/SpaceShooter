@@ -50,26 +50,35 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!gameOver && !gamePaused && Input.GetKeyDown(KeyCode.Escape))
+        if (gameOver)
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gamePaused = !gamePaused;
+        }
+        if (gamePaused)
         {
             EventGame gamePause = new(Constant.pauseGame, 0, 0);
             GameEvent.Raise(gamePause);
-            gamePaused = true;
         }
-        if (resumeGame)
+
+
+        pauseTime -= Time.deltaTime;
+        EventGame pausedTime = new(Constant.gamePauseTime, pauseTime, 0);
+        GameEvent.Raise(pausedTime);
+        if (pauseTime <= 1)
         {
-            pauseTime -= Time.deltaTime;
-            EventGame pausedTime = new(Constant.gamePauseTime, pauseTime, 0);
-            GameEvent.Raise(pausedTime);
-            if (pauseTime <= 1)
-            {
-                EventGame gameResume = new(Constant.resumeGame, 0, 0);
-                GameEvent.Raise(gameResume);
-                pauseTime = 3.0f;
-                gamePaused = false;
-                resumeGame = false;
-            }
+            EventGame gameResume = new(Constant.resumeGame, 0, 0);
+            GameEvent.Raise(gameResume);
+            pauseTime = 3.0f;
+            gamePaused = false;
+            resumeGame = false;
         }
+
+
+
         // GAME TIME
         if (gamePaused)
         {
