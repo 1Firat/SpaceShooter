@@ -20,6 +20,13 @@ public class MenuUIManager : MonoBehaviour
 
     void EventListener(EventGame eg)
     {
+        if (eg.type == Constant.notQuit)
+        {
+            quitBackGround.SetActive(false);
+            quitYesButton.SetActive(false);
+            quitNoButton.SetActive(false);
+            quitText.SetActive(false);
+        }
         if (eg.type == Constant.quitRequest)
         {
             quitBackGround.SetActive(true);

@@ -1126,7 +1126,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 788147436}
         m_TargetAssemblyTypeName: GameButtonClicks, Assembly-CSharp
-        m_MethodName: MainMenu
+        m_MethodName: CancelQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
