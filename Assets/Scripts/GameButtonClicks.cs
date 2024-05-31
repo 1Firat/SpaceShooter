@@ -22,6 +22,16 @@ public class GameButtonClicks : MonoBehaviour
             Application.Quit();
 #endif
     }
+    public void QuitRequest()
+    {
+        EventGame quitRequest = new(Constant.quitRequest, 0, 0);
+        GameEvent.Raise(quitRequest);
+    }
+    public void CancelQuit()
+    {
+        EventGame cancelQuit = new(Constant.notQuit, 0, 0);
+        GameEvent.Raise(cancelQuit);
+    }
     public void ResumeGame()
     {
         EventGame resumed = new(Constant.playGame, 0, 0);

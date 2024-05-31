@@ -32,6 +32,7 @@ public class UI : MonoBehaviour
     public GameObject grayHeart1;
     public GameObject grayHeart2;
     public GameObject grayHeart3;
+    public GameObject quitObjects;
 
     public int heart = 3;
     public float score;
@@ -188,6 +189,14 @@ public class UI : MonoBehaviour
         if (eg.type == Constant.decreaseScore)
         {
             decrease = true;
+        }
+        if (eg.type == Constant.notQuit)
+        {
+            quitObjects.SetActive(false);
+        }
+        if (eg.type == Constant.quitRequest)
+        {
+            quitObjects.SetActive(true);
         }
     }
 }

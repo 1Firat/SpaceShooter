@@ -28,4 +28,6 @@ public static class Constant
     public readonly static string buttonClick = "button_clicked";
     public readonly static string decreaseScore = "decrease_score";
     public readonly static string plusScore = "plus_score";
+    public readonly static string notQuit = "not_quit";
+    public readonly static string quitRequest = "quit_request";
 }
