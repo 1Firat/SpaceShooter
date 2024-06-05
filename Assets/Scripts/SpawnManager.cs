@@ -76,7 +76,7 @@ public class SpawnManager : MonoBehaviour
 
     private void AmmoBoxSpawn()
     {
-        Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 41.1f, 800);
+        Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 41.1f, 410);
         GameObject a = Instantiate(ammoBox, randomPos, enemySpawnPoint.rotation);
         EnemyMovement script = a.GetComponent<EnemyMovement>();
         script.enemySpeed = DifficultySelect.selected.enemySpeed;
@@ -86,7 +86,7 @@ public class SpawnManager : MonoBehaviour
     private void Spawn()
     {
         GameObject randomSpawnEnemy = enemy[Random.Range(0, enemy.Length)];
-        Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 32f, 800);
+        Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 32f, 410);
 
         GameObject o = Instantiate(randomSpawnEnemy, randomPos, enemySpawnPoint.rotation);
         EnemyMovement script = o.GetComponent<EnemyMovement>();
