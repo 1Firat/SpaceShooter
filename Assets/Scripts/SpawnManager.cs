@@ -50,53 +50,12 @@ public class SpawnManager : MonoBehaviour
 
         float dt = Time.deltaTime;
         spawnRoutine(dt);
-
-        // if (gameOver != false)
-        // {
-        //     Destroy(gameObject);
-        // }
-
         ammoBoxSpawnTime -= Time.deltaTime;
 
         if (ammoBoxSpawnTime <= 0)
         {
-            Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 41.1f, 800);
-            GameObject a = Instantiate(ammoBox, randomPos, enemySpawnPoint.rotation);
-            EnemyMovement script = a.GetComponent<EnemyMovement>();
-            script.enemySpeed = DifficultySelect.selected.enemySpeed;
-            ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
+            AmmoBoxSpawn();
         }
-
-        // if (gameOver)
-        // {
-        //     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //     if (enemies == null)
-        //     {
-        //         return;
-        //     }
-        //     foreach (GameObject enemy in enemies)
-        //     {
-        //         Destroy(enemy);
-        //     }
-        //     GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
-        //     if (bullets == null)
-        //     {
-        //         return;
-        //     }
-        //     foreach (GameObject bullet in bullets)
-        //     {
-        //         bullet.SetActive(false);
-        //     }
-        //     GameObject[] ammoBoxs = GameObject.FindGameObjectsWithTag("AmmoBox");
-        //     if (ammoBoxs == null)
-        //     {
-        //         return;
-        //     }
-        //     foreach (GameObject ammoBox in ammoBoxs)
-        //     {
-        //         Destroy(ammoBox);
-        //     }
-        // }
     }
 
     void EventListener(EventGame eg)
@@ -115,6 +74,14 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    private void AmmoBoxSpawn()
+    {
+        Vector3 randomPos = new Vector3(Random.Range(-spawnPos, spawnPos), 41.1f, 800);
+        GameObject a = Instantiate(ammoBox, randomPos, enemySpawnPoint.rotation);
+        EnemyMovement script = a.GetComponent<EnemyMovement>();
+        script.enemySpeed = DifficultySelect.selected.enemySpeed;
+        ammoBoxSpawnTime = DifficultySelect.selected.ammoBoxSpawnTime;
+    }
 
     private void Spawn()
     {

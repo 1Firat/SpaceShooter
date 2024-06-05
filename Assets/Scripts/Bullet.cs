@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public GameObject bullet;
     private float speed;
+    private float tdt;
     private AudioSource audioSource;
 
     void Start()
@@ -20,8 +21,9 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        tdt = Time.deltaTime;
         Vector3 pos = gameObject.transform.position;
-        gameObject.transform.position = new(pos.x, pos.y, pos.z + Time.deltaTime * speed);
+        gameObject.transform.position = new(pos.x, pos.y, pos.z + tdt * speed);
     }
 
     private void OnTriggerEnter(Collider other)

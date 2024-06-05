@@ -38,6 +38,7 @@ public class UI : MonoBehaviour
     public float score;
     public float scoreViewCurrentTime;
     public float scoreViewMaxTime = 0.2f;
+    private float tdt;
 
     public bool gameOver;
     public bool winControl;
@@ -58,6 +59,7 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
+        tdt = Time.deltaTime;
         if (heart == 3)
         {
             heart1.gameObject.SetActive(true);
@@ -83,30 +85,15 @@ public class UI : MonoBehaviour
         }
         if (gameOver && !winControl)
         {
-            endGameBackGround.SetActive(true);
-            endGameLoseMainMenuButton.SetActive(true);
-            endGameLoseTryAgainButton.SetActive(true);
-            gameEndScoreText.gameObject.SetActive(true);
-            gameOverText.SetActive(true);
+            GameOverControl();
         }
         if (winControl && gameOver)
         {
-            endGameBackGround.SetActive(true);
-            endGameWinMainMenuButton.SetActive(true);
-            gameEndScoreText.gameObject.SetActive(true);
-            winText.SetActive(true);
+            WinControl();
         }
         if (changeScore)
         {
-            scoreViewCurrentTime += Time.deltaTime;
-            if (scoreViewCurrentTime >= scoreViewMaxTime)
-            {
-                scoreText.color = Color.white;
-                scoreText.text = "Score: " + score;
-                gameEndScoreText.text = "Your " + scoreText.text;
-                scoreViewCurrentTime = 0;
-                changeScore = false;
-            }
+            ChangeScore(tdt);
         }
     }
 
@@ -197,6 +184,37 @@ public class UI : MonoBehaviour
         if (eg.type == Constant.quitRequest)
         {
             quitObjects.SetActive(true);
+        }
+    }
+
+    void EndGameObjects()
+    {
+        endGameBackGround.SetActive(true);
+        gameEndScoreText.gameObject.SetActive(true);
+    }
+    void GameOverControl()
+    {
+        EndGameObjects();
+        endGameLoseMainMenuButton.SetActive(true);
+        endGameLoseTryAgainButton.SetActive(true);
+        gameOverText.SetActive(true);
+    }
+    void WinControl()
+    {
+        EndGameObjects();
+        endGameWinMainMenuButton.SetActive(true);
+        winText.SetActive(true);
+    }
+    void ChangeScore(float td)
+    {
+        scoreViewCurrentTime += td;
+        if (scoreViewCurrentTime >= scoreViewMaxTime)
+        {
+            scoreText.color = Color.white;
+            scoreText.text = "Score: " + score;
+            gameEndScoreText.text = "Your " + scoreText.text;
+            scoreViewCurrentTime = 0;
+            changeScore = false;
         }
     }
 }
