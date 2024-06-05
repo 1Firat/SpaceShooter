@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
 
     void AmmoBoxControl(float td)
     {
-        ammoBoxSkillTime = td;
+        ammoBoxSkillTime += td;
         if (currentAmmo >= collectedAmmoBoxMaxAmmo)
         {
             EventGame ammoMaxed = new(Constant.ammoMax, 0, 0);
