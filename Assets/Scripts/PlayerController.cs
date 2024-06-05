@@ -64,16 +64,16 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // float horizontalInput = Input.GetAxis("Horizontal");
-        float horizontalInput = 0;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        // float horizontalInput = 0;
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            horizontalInput = 1;
+            // horizontalInput = 1;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-40, 90, -180), Time.deltaTime * speed);
         }
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            horizontalInput = -1;
+            // horizontalInput = -1;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-130, 90, -180), Time.deltaTime * speed);
         }
         if (!Input.GetKey(KeyCode.LeftArrow) || !Input.GetKey(KeyCode.A) || !Input.GetKey(KeyCode.RightArrow) || !Input.GetKey(KeyCode.D))
@@ -83,10 +83,10 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = new Vector3(horizontalInput, 0f, 0f);
         transform.Translate(moveDirection * DifficultySelect.selected.playerSpeed * Time.deltaTime, 0f);
 
-        if (horizontalInput == 0)
-        {
-            transform.Translate(Vector3.zero);
-        }
+        // if (horizontalInput == 0)
+        // {
+        //     transform.Translate(Vector3.zero);
+        // }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
