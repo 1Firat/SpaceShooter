@@ -132,15 +132,17 @@ public class GameManager : MonoBehaviour
     void PauseTime(float td)
     {
         pauseTime -= td;
+        Debug.Log(pauseTime);
         EventGame pausedTime = new(Constant.gamePauseTime, pauseTime, 0);
         GameEvent.Raise(pausedTime);
         if (pauseTime <= 1)
         {
             EventGame gameResume = new(Constant.resumeGame, 0, 0);
             GameEvent.Raise(gameResume);
+            gameCountDown = false;
             pauseTime = 3.0f;
         }
-        gameCountDown = false;
+
     }
 
     void GameTime(float td)
@@ -257,6 +259,7 @@ public class GameManager : MonoBehaviour
         {
             resumeGame = true;
         }
+
     }
 
     private IEnumerator DestroyAfterEffect()

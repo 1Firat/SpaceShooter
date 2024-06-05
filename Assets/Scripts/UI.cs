@@ -42,8 +42,6 @@ public class UI : MonoBehaviour
 
     public bool gameOver;
     public bool winControl;
-    public bool decrease;
-    public bool plus;
     public bool changeScore;
 
     void OnEnable()
@@ -168,14 +166,6 @@ public class UI : MonoBehaviour
                 pauseTimeText.gameObject.SetActive(false);
                 playIcon.SetActive(false);
             }
-        }
-        if (eg.type == Constant.plusScore)
-        {
-            plus = true;
-        }
-        if (eg.type == Constant.decreaseScore)
-        {
-            decrease = true;
         }
         if (eg.type == Constant.notQuit)
         {
