@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
             GameEvent.Raise(gameOver);
         }
 
-        if (score >= DifficultySelect.selected.winScore)
+        if (score >= DifficultySelect.selected.winScore && gameOver)
         {
             WinControl();
         }
@@ -132,7 +132,6 @@ public class GameManager : MonoBehaviour
     void PauseTime(float td)
     {
         pauseTime -= td;
-        Debug.Log(pauseTime);
         EventGame pausedTime = new(Constant.gamePauseTime, pauseTime, 0);
         GameEvent.Raise(pausedTime);
         if (pauseTime <= 1)

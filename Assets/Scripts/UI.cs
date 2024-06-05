@@ -43,6 +43,7 @@ public class UI : MonoBehaviour
     public bool gameOver;
     public bool winControl;
     public bool changeScore;
+    public bool timeIsUp;
 
     void OnEnable()
     {

@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem hitEffect;
     public ParticleSystem collectAmmoBoxEffect;
     private AudioSource[] audioSources;
-
     void OnEnable()
     {
         GameEvent.RegisterListener(EventListener);
@@ -79,11 +78,8 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-90, 90, -180), Time.deltaTime * 5);
         }
         Vector3 moveDirection = new Vector3(horizontalInput, 0f, 0f);
-        if (horizontalInput == 0f)
-        {
-            moveDirection = Vector3.zero;
-        }
         transform.Translate(moveDirection * DifficultySelect.selected.playerSpeed * Time.deltaTime, 0f);
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
