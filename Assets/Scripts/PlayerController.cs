@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
         if (gameOver)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-90, 90, -180), Time.deltaTime * 5);
